@@ -30,5 +30,16 @@
       "time": "11:00",
       "organizer": "Carey Wales"
     }
+    },
+    {
+      "id": 1789,
+      "category": "sustainability",
+      "title": "Recycling Drive",
+      "description": "Bring your recycllables.",
+      "location": "Playa Del Carmen",
+      "date": "July 22, 2022",
+      "time": "11:00",
+      "organizer": "Josey Wales"
+    }
   ]
 }
