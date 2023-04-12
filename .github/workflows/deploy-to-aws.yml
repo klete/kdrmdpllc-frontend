@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: Upload to Amazon S3
+    name: Deploy to Amazon S3
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint.
     permissions:
@@ -15,11 +15,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::121726245749:role/S3-Github-Role
           aws-region: us-east-2
+
+      - name: Setup node.js environment
+        run: actions/setup-node@v3
+
+      - name: Npm install and npm build
+        run: |
+          npm install
+          npm run build
+
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 sync . s3://dev.kdrmdpllc.com
+          aws s3 sync ./dist s3://dev.kdrmdpllc.com
