@@ -23,7 +23,7 @@ jobs:
           aws-region: us-east-2
 
       - name: Setup node.js environment
-        run: actions/setup-node@v3
+        uses: actions/setup-node@v3
 
       - name: Npm install and npm build
         run: |
@@ -32,4 +32,4 @@ jobs:
 
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 sync ./dist s3://dev.kdrmdpllc.com
+          aws s3 sync ./dist s3://dev.kdrmdpllc.com --delete
