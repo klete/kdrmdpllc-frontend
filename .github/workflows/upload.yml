@@ -1,3 +1,9 @@
+name: Deployment
+
+on:
+  push:
+    brnches: [main]
+
 jobs:
   deploy:
     name: Upload to Amazon S3
