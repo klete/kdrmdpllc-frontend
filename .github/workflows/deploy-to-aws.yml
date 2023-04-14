@@ -28,7 +28,7 @@ jobs:
       - name: Npm install and npm build
         run: |
           npm install
-          npm run build
+          npm run buildDev
 
       - name: Copy files to the test website with the AWS CLI
         run: |
