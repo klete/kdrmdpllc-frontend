@@ -7,8 +7,8 @@ const auth = getAuth(firebaseApp)
 let user = ref(auth.currentUser)
 
 onAuthStateChanged(auth, (_user) => {
-  console.log('User state change.  Current user is: ')
-  console.log(_user)
+  // console.log('User state change.  Current user is: ')
+  // console.log(_user)
   user.value = _user
 })
 

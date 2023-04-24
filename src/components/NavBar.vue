@@ -80,7 +80,7 @@ import NavLink from './NavLink.vue'
 import useLogout from '../composables/use-logout.js'
 import getUser from '../composables/get-user.js'
 import FlashMessageService from '../services/FlashMessageService'
-import { onMounted, computed, ref, watch } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -88,16 +88,21 @@ const theme = ref(null)
 let timeout = null
 
 const { user } = getUser()
-const isAuthenticated = ref(!!user.value)
+
+const isAuthenticated = computed(() => {
+  return !!user.value?.uid
+})
 
 // console.log(user)
 // console.log(user.value)
 // console.log(isAuthenticated.value)
 
-watch(user, (_user) => {
-  // console.log(_user?.uid)
-  isAuthenticated.value = !!_user?.uid
-})
+// const isAuthenticated = ref(!!user.value)
+//
+// watch(user, (_user) => {
+//   // console.log(_user?.uid)
+//   isAuthenticated.value = !!_user?.uid
+// })
 
 defineProps({
   menuIsActive: {
