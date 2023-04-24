@@ -1,0 +1,204 @@
+form {
+  width: min(100%, 53rem);
+  margin: 0 auto;
+  padding: 1em 2em;
+  border-radius: 1.5em;
+  /* background: silver; */
+}
+
+input,
+select,
+textarea {
+  background: var(--form-input-bkg);
+  color: var(--form-input-text);
+  margin-left: 1px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid var(--form-text);
+}
+
+input[type='password'],
+input[type='email'] {
+  border: none;
+  border-bottom: 1px solid var(--form-text);
+  border-radius: 0;
+  outline: none;
+
+  width: 100%;
+  font-size: 1.6rem;
+  margin: 0 0 1rem 0;
+  padding: 1em 0 0 0;
+
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type='password']:focus,
+input[type='email']:focus {
+  border-bottom: 1px solid var(--form-text);
+  box-shadow: 0 1px 0 0 var(--form-text);
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom-color: var(--form-text);
+  -webkit-text-fill-color: var(--form-text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--form-bkg) inset;
+  box-shadow: 0 0 0px 1000px var(--form-bkg) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+}
+
+fieldset + fieldset {
+  margin-top: 1.5rem;
+}
+
+label {
+  display: block;
+  margin: 0 0 0.5rem 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+
+  height: 3.6rem;
+
+  padding: 0 1.6rem;
+  line-height: 3.6rem;
+  text-align: center;
+
+  font-size: 1.4rem;
+  border-radius: var(--input-radius);
+
+  letter-spacing: 0.5px;
+  outline: 0;
+  border: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn-wide {
+  width: 100%;
+}
+
+.form-btn {
+  background-color: var(--form-btn-bkg);
+  color: var(--form-btn-text);
+  transform: scale(1);
+  transition: var(--btn-transition);
+  margin-top: 3rem;
+}
+
+.form-btn-center {
+  display: block;
+  margin: 0 auto;
+}
+
+.form-btn:active {
+  transform: scale(var(--btn-scale));
+}
+
+.data-field label {
+  font-size: 1.5rem;
+}
+
+.data-field p {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.data-field p.label {
+  font-size: 1.5rem;
+  margin: 0 1rem 0.5rem 1rem;
+}
+
+div.select__item,
+label.select__item {
+  padding: 0.5em;
+  font-size: 1.3rem;
+  cursor: pointer;
+
+  background: var(--select-item-bkg);
+  color: var(--select-item-text);
+
+  border-radius: var(--input-radius);
+  /* text-align: center; */
+  transition: background 100ms;
+}
+
+@media (min-width: 835px) {
+  div.select__item,
+  label.select__item {
+    padding: 0.5em;
+    font-size: 1.4rem;
+  }
+}
+
+div.select__item--selected,
+label.select__item--selected {
+  background: var(--selected-item-bkg);
+  color: var(--selected-item-text);
+}
+
+legend {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#section__employee-states .select__item {
+  font-size: var(--fs-700);
+}
+
+#section__employee-states .select {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+}
+
+.select-respirator-multiple {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.select-respirator-multiple div.select__item,
+.select-respirator-multiple label.select__item {
+  text-align: left;
+}
+
+@media (max-width: 53rem) {
+  #section__employee-states .select__item {
+    font-size: var(--fs-650);
+  }
+}
