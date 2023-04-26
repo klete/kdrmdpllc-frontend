@@ -95,13 +95,4 @@ th a {
   max-width: 100%;
   overflow-x: auto;
 }
-
-/* @media (max-width: 650px) {
-  th {
-    display: none;
-  }
-  td {
-    display: block;
-  }
-} */
 </style>

@@ -55,6 +55,7 @@ import getUser from '@/composables/get-user.js'
 import FlashMessageService from '@/services/FlashMessageService'
 import { onMounted, computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const theme = ref(null)
 let timeout = null
@@ -113,7 +114,7 @@ function login() {
 
 async function handleLogout() {
   console.log('logging out')
-  const router = useRouter()
+
   const { logout, error } = useLogout()
 
   await logout()
