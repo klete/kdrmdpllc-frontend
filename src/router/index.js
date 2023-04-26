@@ -1,11 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Welcome from '../views/Welcome.vue'
-import NotFound from '../views/NotFound.vue'
-import NetworkError from '../views/NetworkError.vue'
-import Login from '../views/LogIn.vue'
+import Welcome from '@/views/Welcome.vue'
+import NotFound from '@/views/NotFound.vue'
+import NetworkError from '@/views/NetworkError.vue'
+import Login from '@/views/LogIn.vue'
+import Dashboard from '@/views/Dashboard.vue'
+import IndexView from '@/views/IndexView.vue'
 
-import FlashMessageService from '../services/FlashMessageService'
+import FlashMessageService from '@/services/FlashMessageService'
+import firebaseApp from '../firebase/config.js'
+import { getAuth } from 'firebase/auth'
+
+const requireAuth = (to) => {
+  const auth = getAuth(firebaseApp)
+  let user = auth.currentUser
+
+  if (to.meta.requiresAuth && !user) {
+    FlashMessageService.setMessage(
+      'You must be logged in to access the page you requested.',
+    )
+    return {
+      path: '/login',
+      // save the location we were at to come back later
+      // query: { redirect: to.fullPath }
+    }
+  }
+}
 
 const routes = [
   {
@@ -13,6 +33,21 @@ const routes = [
     name: 'Welcome',
     component: Welcome,
     meta: { requiresAuth: false },
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/dashboard/:id',
+    name: 'IndexView',
+    component: IndexView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+    props: true,
   },
   {
     path: '/home',
@@ -27,7 +62,7 @@ const routes = [
   },
 
   {
-    path: '/:catchAll(.*)',
+    path: '/:catchAll(.*)*',
     name: 'NotFound',
     component: NotFound,
     meta: { requiresAuth: false },
@@ -60,23 +95,6 @@ const router = createRouter({
   },
 })
 
-router.beforeEach((to) => {
-  function isAuthenticated() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    return !!user
-  }
-
-  if (to.meta.requiresAuth && !isAuthenticated()) {
-    FlashMessageService.setMessage(
-      'You must be logged in to access the page you requested.',
-    )
-    return {
-      path: '/login',
-      // save the location we were at to come back later
-      // query: { redirect: to.fullPath }
-    }
-  }
-})
 export default router
 
 // if (error.response && error.response.status == 404) {

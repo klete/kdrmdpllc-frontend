@@ -13,12 +13,20 @@ import './assets/css/base.css'
 import './assets/css/form.css'
 import './assets/css/print.css'
 
-const app = createApp(App)
+import firebaseApp from '@/firebase/config.js'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
-app.use(router)
+const auth = getAuth(firebaseApp)
 
-app.component('base-dialog', BaseDialog)
-app.component('modal', Modal)
-app.provide('GStore', GStore)
+let app
 
-app.mount('#app')
+onAuthStateChanged(auth, () => {
+  if (!app) {
+    app = createApp(App)
+    app.use(router)
+    app.component('base-dialog', BaseDialog)
+    app.component('modal', Modal)
+    app.provide('GStore', GStore)
+    app.mount('#app')
+  }
+})

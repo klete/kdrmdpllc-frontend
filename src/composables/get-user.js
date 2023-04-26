@@ -17,3 +17,5 @@ const getUser = () => {
 }
 
 export default getUser
+
+// From Udemy: Net Ninja Vue course

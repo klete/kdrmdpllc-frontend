@@ -58,7 +58,7 @@ export default {
         // const user = userCredential.user
         context.emit('close')
         FlashMessageService.setMessage('Login was successful!')
-        router.push({ name: 'Welcome' })
+        router.push({ name: 'Dashboard' })
       } catch (error) {
         console.log(error)
 

@@ -2,7 +2,7 @@
   <div class="container grid grid-center">
     <h1>Oops!</h1>
     <h3>The {{ resource }} you are looking for is not here.</h3>
-    <router-link :to="{ name: 'Form' }" class="btn">Home</router-link>
+    <router-link :to="{ name: 'Welcome' }" class="btn">Home</router-link>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   props: {
     resource: {
       type: String,
-      required: true,
+      required: false,
       default: 'page',
     },
   },

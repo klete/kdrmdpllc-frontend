@@ -1,20 +1,7 @@
 <template>
   <div id="nav-container">
     <header class="flex">
-      <div class="header-logo flex flex-center">
-        <NavLink to="Welcome" @was-clicked="closeMenu">
-          <img
-            class="dark-mode"
-            src="../assets/images/Vest-log-on-get-cleared-go-to-work.png"
-            alt="Vest Logo"
-          />
-          <img
-            class="light-mode"
-            src="../assets/images/VEST_Logotype-01.png"
-            alt="Vest Logo"
-          />
-        </NavLink>
-      </div>
+      <div class="header-logo flex flex-center"></div>
       <nav
         @click.stop=""
         id="navbar"
@@ -25,27 +12,13 @@
           <li>
             <NavLink to="Welcome" label="Home" @was-clicked="closeMenu" />
           </li>
-
-          <!-- <li v-if="isAuthenticated">
-            <NavLink to="WE-A" label="WE-A" @was-clicked="closeMenu" />
-          </li>
-          <li v-if="isAuthenticated">
-            <NavLink to="WE-B" label="WE-B" @was-clicked="closeMenu" />
-          </li>
-          <li v-if="isAuthenticated">
-            <NavLink to="WE-C" label="WE-C" @was-clicked="closeMenu" />
-          </li>
-          <li v-if="isAuthenticated">
-            <NavLink to="WE-D" label="WE-D" @was-clicked="closeMenu" />
-          </li>
-          <li v-if="isAuthenticated">
-            <NavLink to="WE-E" label="WE-E" @was-clicked="closeMenu" />
-          </li> -->
-          <!-- <li @click="signup" v-if="!isAuthenticated">
-          <span class="nav-btn">Sign Up</span>
-        </li> -->
           <li v-if="!isAuthenticated">
             <span @click="login" class="nav-btn">Login</span>
+          </li>
+          <li v-if="isAuthenticated">
+            <router-link :to="{ name: 'Dashboard' }" class="nav-btn">
+              Dashboard
+            </router-link>
           </li>
           <li v-if="isAuthenticated">
             <span @click="handleLogout" class="nav-btn">Log Out</span>
@@ -77,13 +50,12 @@ import Moon from './Moon.vue'
 import Sun from './Sun.vue'
 import NavLink from './NavLink.vue'
 
-import useLogout from '../composables/use-logout.js'
-import getUser from '../composables/get-user.js'
-import FlashMessageService from '../services/FlashMessageService'
+import useLogout from '@/composables/use-logout.js'
+import getUser from '@/composables/get-user.js'
+import FlashMessageService from '@/services/FlashMessageService'
 import { onMounted, computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const router = useRouter()
 const theme = ref(null)
 let timeout = null
 
@@ -93,18 +65,7 @@ const isAuthenticated = computed(() => {
   return !!user.value?.uid
 })
 
-// console.log(user)
-// console.log(user.value)
-// console.log(isAuthenticated.value)
-
-// const isAuthenticated = ref(!!user.value)
-//
-// watch(user, (_user) => {
-//   // console.log(_user?.uid)
-//   isAuthenticated.value = !!_user?.uid
-// })
-
-defineProps({
+const props = defineProps({
   menuIsActive: {
     type: Boolean,
     default: false,
@@ -139,7 +100,9 @@ function getSystemTheme() {
 }
 
 function getStoredTheme() {
-  return localStorage.getItem('theme')
+  let storedTheme = localStorage.getItem('theme')
+  if (storedTheme === 'undefined') return undefined
+  return storedTheme
 }
 
 function login() {
@@ -149,9 +112,8 @@ function login() {
 }
 
 async function handleLogout() {
-  // async
   console.log('logging out')
-
+  const router = useRouter()
   const { logout, error } = useLogout()
 
   await logout()
@@ -161,9 +123,9 @@ async function handleLogout() {
   } else {
     emit('update:menuStatus', false)
     FlashMessageService.setMessage('You are now logged out.')
-    localStorage.removeItem('user')
+
     console.log('user logged out')
-    router.push('/')
+    router.push({ name: 'Login' })
   }
 }
 
@@ -175,7 +137,7 @@ function signup() {
 
 function toggleMenu() {
   // menuIsActive = !menuIsActive
-  emit('update:menuStatus', !menuIsActive)
+  emit('update:menuStatus', !props.menuIsActive)
 }
 
 function closeMenu() {
