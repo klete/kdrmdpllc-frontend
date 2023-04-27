@@ -68,9 +68,18 @@ article {
   margin-inline: auto;
 }
 
+.table-container {
+  margin: 1rem 2rem;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+}
+
+table + table {
   margin-top: 3rem;
 }
 
@@ -98,9 +107,7 @@ td a {
   color: white;
 }
 
-.table-container {
-  margin: 1rem 2rem;
-  max-width: 100%;
-  overflow-x: auto;
+h2 {
+  margin: 1rem 2rem 1.5rem 2.5rem;
 }
 </style>

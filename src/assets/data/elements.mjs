@@ -59,6 +59,78 @@ const elements = [
     name: 'magnesium chloride',
     category: null,
   },
+  {
+    id: 11,
+    aka: 'vitamin c',
+    name: 'ascorbic acid',
+    category: null,
+  },
+  {
+    id: 12,
+    aka: null,
+    name: 'argenine',
+    category: 'Bi-Amino Blend',
+  },
+  {
+    id: 13,
+    aka: null,
+    name: 'citrulline',
+    category: 'Bi-Amino Blend',
+  },
+  {
+    id: 14,
+    aka: null,
+    name: 'glycine',
+    category: 'Bi-Amino Blend',
+  },
+  {
+    id: 15,
+    aka: null,
+    name: 'lysine',
+    category: 'Bi-Amino Blend',
+  },
+  {
+    id: 16,
+    aka: null,
+    name: 'zinc',
+    category: 'Tralement Blend',
+  },
+  {
+    id: 17,
+    aka: null,
+    name: 'manganese',
+    category: 'Tralement Blend',
+  },
+  {
+    id: 18,
+    aka: null,
+    name: 'copper',
+    category: 'Tralement Blend',
+  },
+  {
+    id: 19,
+    aka: null,
+    name: 'selenium',
+    category: 'Tralement Blend',
+  },
+  {
+    id: 20,
+    aka: null,
+    name: 'glutathione',
+    category: null,
+  },
+  {
+    id: 21,
+    aka: null,
+    name: 'L-Taurine',
+    category: null,
+  },
+  {
+    id: 22,
+    aka: null,
+    name: 'Alpha-Lipoic Acid',
+    category: null,
+  },
 ]
 
 export default {

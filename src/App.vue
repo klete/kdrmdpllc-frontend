@@ -14,6 +14,8 @@
     </router-view>
   </main>
 
+  <footer></footer>
+
   <FlashMessage v-if="FlashMessageService.hasMessage()" />
 
   <modal v-if="showModal" :isActive="isActive" @close="handleCloseModal">
@@ -108,5 +110,9 @@ const showModal = computed(() => {
 .slide-fade-leave-to {
   transform: translateX(-20px);
   opacity: 0;
+}
+
+footer {
+  height: 5rem;
 }
 </style>

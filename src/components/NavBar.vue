@@ -11,7 +11,7 @@
         :class="{ active: menuIsActive }"
       >
         <ul class="flex">
-          <li>
+          <li v-if="!isAuthenticated">
             <NavLink to="Welcome" label="Home" @was-clicked="closeMenu" />
           </li>
           <li v-if="!isAuthenticated">
