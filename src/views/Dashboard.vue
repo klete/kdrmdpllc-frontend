@@ -13,7 +13,7 @@
         <tr>
           <th v-for="service in services" :key="service.id">
             <router-link
-              :to="{ name: 'IndexView', params: { id: service.id } }"
+              :to="{ name: 'ServiceView', params: { id: service.id } }"
             >
               {{ service.name }}
             </router-link>
@@ -22,7 +22,14 @@
 
         <tr v-for="i in numRowsServices">
           <td v-for="j in services.length">
-            {{ services[j - 1]?.therapies[i - 1]?.name }}
+            <router-link
+              :to="{
+                name: 'TherapyView',
+                params: { id: `${services[j - 1]?.therapies[i - 1]?.id}` },
+              }"
+            >
+              {{ services[j - 1]?.therapies[i - 1]?.name }}
+            </router-link>
           </td>
         </tr>
       </table>
@@ -43,11 +50,11 @@
 </template>
 
 <script setup>
-import Data from '@/assets/data/base.mjs'
+import Services from '@/assets/data/services.mjs'
+import TargetSystems from '@/assets/data/target_systems.mjs'
 
-const services = Data.services
-const therapies = Data.therapies
-const target_systems = Data.target_systems
+const services = Services.services
+const target_systems = TargetSystems.target_systems
 const numRowsServices = 18
 </script>
 
@@ -86,7 +93,8 @@ th {
   background: hsl(276 100% 19% / 0.2);
 }
 
-th a {
+th a,
+td a {
   color: white;
 }
 

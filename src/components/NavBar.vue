@@ -1,7 +1,9 @@
 <template>
   <div id="nav-container">
     <header class="flex">
-      <div class="header-logo flex flex-center"></div>
+      <div class="header-logo flex flex-center">
+        KDRMD PLLC
+      </div>
       <nav
         @click.stop=""
         id="navbar"
@@ -126,7 +128,7 @@ async function handleLogout() {
     FlashMessageService.setMessage('You are now logged out.')
 
     console.log('user logged out')
-    router.push({ name: 'Login' })
+    router.push({ name: 'Welcome' })
   }
 }
 

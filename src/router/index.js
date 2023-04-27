@@ -5,7 +5,8 @@ import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 import Login from '@/views/LogIn.vue'
 import Dashboard from '@/views/Dashboard.vue'
-import IndexView from '@/views/IndexView.vue'
+import ServiceView from '@/views/ServiceView.vue'
+import TherapyView from '@/views/TherapyView.vue'
 
 import FlashMessageService from '@/services/FlashMessageService'
 import firebaseApp from '../firebase/config.js'
@@ -43,8 +44,16 @@ const routes = [
   },
   {
     path: '/dashboard/:id',
-    name: 'IndexView',
-    component: IndexView,
+    name: 'ServiceView',
+    component: ServiceView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+    props: true,
+  },
+  {
+    path: '/therapy/:id',
+    name: 'TherapyView',
+    component: TherapyView,
     meta: { requiresAuth: true },
     beforeEnter: requireAuth,
     props: true,
