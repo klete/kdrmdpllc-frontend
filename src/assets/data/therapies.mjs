@@ -1596,6 +1596,32 @@ const therapies = [
       elements: [],
     },
   },
+  {
+    id: 40,
+    name: 'Biotin',
+    services: [],
+    targets: [],
+    data: {
+      type: null,
+      indications: '',
+      contraindications: '',
+      cautions: [],
+      description: '',
+      focus: [],
+      frequency: null,
+      source: null,
+      infusion: {
+        minimum: null,
+        maximum: null,
+      },
+      substrate: {
+        name: null,
+        amount: null,
+        units: null,
+      },
+      elements: [],
+    },
+  },
 ]
 
 export default {

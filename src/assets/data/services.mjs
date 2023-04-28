@@ -201,39 +201,39 @@ const services = [
     ],
   },
 
-  {
-    id: 6,
-    name: 'Enhanced Therapies',
-    therapies: [
-      {
-        id: 28,
-        name: 'Ozone UV IV Infusion',
-      },
-      {
-        id: 19,
-        name: 'Hyperbarics',
-      },
-      {
-        id: 29,
-        name: 'PBM',
-      },
-      {
-        id: 14,
-        name: 'Cryotherapy',
-      },
-    ],
-  },
+  // {
+  //   id: 6,
+  //   name: 'Enhanced Therapies',
+  //   therapies: [
+  //     {
+  //       id: 28,
+  //       name: 'Ozone UV IV Infusion',
+  //     },
+  //     {
+  //       id: 19,
+  //       name: 'Hyperbarics',
+  //     },
+  //     {
+  //       id: 29,
+  //       name: 'PBM',
+  //     },
+  //     {
+  //       id: 14,
+  //       name: 'Cryotherapy',
+  //     },
+  //   ],
+  // },
 
-  {
-    id: 7,
-    name: 'Elements',
-    therapies: [
-      {
-        id: 3,
-        name: 'Alpha-Lipoic Acid (ALA)',
-      },
-    ],
-  },
+  // {
+  //   id: 7,
+  //   name: 'Elements',
+  //   therapies: [
+  //     {
+  //       id: 3,
+  //       name: 'Alpha-Lipoic Acid (ALA)',
+  //     },
+  //   ],
+  // },
 ]
 
 export default {
