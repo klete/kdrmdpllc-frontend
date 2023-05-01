@@ -9,51 +9,50 @@
       <table>
         <tbody>
           <tr>
-            <td>Type:</td>
+            <td>Category:</td>
             <td>
-              <ul>
-                <li
-                  v-for="(type, index) in selectedTherapy.data.type"
-                  :key="index"
-                >
-                  {{ type.name }}
-                </li>
-              </ul>
+              {{ selectedTherapy.category.name }}
             </td>
           </tr>
           <tr>
             <td>Indications:</td>
-            <td>{{ selectedTherapy.data.indications }}</td>
+            <td>{{ selectedTherapy.indications }}</td>
           </tr>
           <tr>
             <td>Contraindications</td>
-            <td>{{ selectedTherapy.data.contraindications }}</td>
+            <td v-if="Array.isArray(selectedTherapy.contraindications)">
+              <ul>
+                <li
+                  v-for="(c, i) in selectedTherapy.contraindications"
+                  :key="i"
+                ></li>
+              </ul>
+              {{ c }}
+            </td>
+            <td v-else>{{ selectedTherapy.contraindications }}</td>
           </tr>
           <tr>
             <td>Cautions:</td>
             <td>
               <ul>
                 <li
-                  v-for="(caution, index) in selectedTherapy.data.cautions"
+                  v-for="(caution, index) in selectedTherapy.cautions"
                   :key="index"
                 >
-                  <span v-html="caution"></span>
+                  <span v-html="caution" class="caution"></span>
                 </li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>Description:</td>
-            <td>{{ selectedTherapy.data.description }}</td>
+            <td>{{ selectedTherapy.description }}</td>
           </tr>
-          <tr>
+          <tr v-if="selectedTherapy.focus.length > 0">
             <td>Focus:</td>
             <td>
               <ul>
-                <li
-                  v-for="(item, index) in selectedTherapy.data.focus"
-                  :key="index"
-                >
+                <li v-for="(item, index) in selectedTherapy.focus" :key="index">
                   {{ item }}
                 </li>
               </ul>
@@ -64,7 +63,7 @@
             <td>
               <ul>
                 <li
-                  v-for="(value, key) in selectedTherapy.data.frequency"
+                  v-for="(value, key) in selectedTherapy.frequency"
                   :key="key"
                 >
                   {{ key }}: {{ value }}
@@ -74,7 +73,7 @@
           </tr>
           <tr>
             <td>Source:</td>
-            <td>{{ selectedTherapy.data.source }}</td>
+            <td>{{ selectedTherapy.source }}</td>
           </tr>
         </tbody>
       </table>
@@ -87,6 +86,7 @@
       <table>
         <thead>
           <th></th>
+          <th></th>
           <th>Amount</th>
 
           <th>Volume Infused</th>
@@ -94,20 +94,36 @@
           <th>Amount Infused</th>
         </thead>
         <tbody>
-          <tr
-            v-for="element in selectedTherapy.data.elements"
-            :key="element.id"
-          >
-            <td class="name">{{ element.name }}</td>
-            <td class="amount">
+          <tr v-for="element in selectedTherapy.elements" :key="element.id">
+            <td v-if="Array.isArray(element)">
+              {{ element[0] }}
+            </td>
+            <td v-else></td>
+            <td v-if="Array.isArray(element)" class="name">
+              {{ element[1].name }}
+            </td>
+            <td v-else class="name">{{ element.name }}</td>
+            <td v-if="Array.isArray(element)" class="amount">
+              {{ element[1].amount }} {{ element[1].elemental_units_per }} /
+              {{ element[1].volume_units }}
+            </td>
+            <td v-else class="amount">
               {{ element.amount }} {{ element.elemental_units_per }} /
               {{ element.volume_units }}
             </td>
-            <td class="amount">
+            <td v-if="Array.isArray(element)" class="amount">
+              {{ element[1].volume_infused }}
+              {{ element[1].volume_infused_units }}
+            </td>
+            <td v-else class="amount">
               {{ element.volume_infused }}
               {{ element.volume_infused_units }}
             </td>
-            <td class="amount">
+            <td v-if="Array.isArray(element)" class="amount">
+              {{ element[1].amount_element_infused }}
+              {{ element[1].element_infused_units }}
+            </td>
+            <td v-else class="amount">
               {{ element.amount_element_infused }}
               {{ element.element_infused_units }}
             </td>
@@ -118,12 +134,13 @@
       <table>
         <tbody>
           <tr>
+            <td></td>
             <td>Substrate</td>
-            <td>{{ selectedTherapy.data.substrate.name }}</td>
+            <td>{{ selectedTherapy.substrate.name }}</td>
             <td class="amount">
-              {{ selectedTherapy.data.substrate.amount }}
+              {{ selectedTherapy.substrate.amount }}
             </td>
-            <td>{{ selectedTherapy.data.substrate.units }}</td>
+            <td>{{ selectedTherapy.substrate.units }}</td>
             <td colspan="5"></td>
           </tr>
         </tbody>
@@ -133,22 +150,24 @@
         <thead>
           <tr>
             <th></th>
-            <th v-if="selectedTherapy.data.infusion?.initial">Initial</th>
-            <th v-if="selectedTherapy.data.infusion?.minimum">Minimum</th>
-            <th v-if="selectedTherapy.data.infusion?.maximum">Maximum</th>
+            <th></th>
+            <th v-if="selectedTherapy.infusion?.initial">Initial</th>
+            <th v-if="selectedTherapy.infusion?.minimum">Minimum</th>
+            <th v-if="selectedTherapy.infusion?.maximum">Maximum</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td></td>
             <td>Infusion rate</td>
-            <td v-if="selectedTherapy.data.infusion?.initial">
-              {{ selectedTherapy.data.infusion?.initial }}
+            <td v-if="selectedTherapy.infusion?.initial">
+              {{ selectedTherapy.infusion?.initial }}
             </td>
-            <td v-if="selectedTherapy.data.infusion?.minimum">
-              {{ selectedTherapy.data.infusion?.minimum }}
+            <td v-if="selectedTherapy.infusion?.minimum">
+              {{ selectedTherapy.infusion?.minimum }}
             </td>
-            <td v-if="selectedTherapy.data.infusion?.maximum">
-              {{ selectedTherapy.data.infusion?.maximum }}
+            <td v-if="selectedTherapy.infusion?.maximum">
+              {{ selectedTherapy.infusion?.maximum }}
             </td>
           </tr>
         </tbody>
@@ -166,9 +185,6 @@ const props = defineProps(['id'])
 
 const selectedId = +props.id
 const selectedTherapy = therapies.find((i) => i.id === selectedId)
-
-console.log(props.id)
-console.log(selectedTherapy)
 </script>
 
 <style scoped>
@@ -241,9 +257,5 @@ ul {
 
 p.spacer {
   height: 2rem;
-}
-
-em {
-  font-weight: 900;
 }
 </style>

@@ -81,8 +81,8 @@ const elements = [
   },
   {
     id: 10,
-    aka: null,
     name: 'magnesium chloride',
+    aka: null,
     category: null,
   },
   {
@@ -90,6 +90,12 @@ const elements = [
     name: 'vitamin c',
     aka: 'ascorbic acid',
     category: null,
+    resources: [
+      'pubmed.ncbi.nlm.nih.gov/29567393/',
+      'www.sciencedirect.com/topics/medicine-and-dentistry/ascorbic-acid-metabolism',
+      'pubchem.ncbi.nlm.nih.gov/compound/ascorbic-acid#section=DSSTox-Substance-ID',
+      'pubchem.ncbi.nlm.nih.gov/source/hsdb/818#section=Metabolism-Pharmacokinetics',
+    ],
     therapies: [
       {
         id: 5,
@@ -140,8 +146,8 @@ const elements = [
   },
   {
     id: 14,
-    aka: null,
     name: 'glycine',
+    aka: null,
     category: 'Bi-Amino Blend',
   },
   {
@@ -181,21 +187,27 @@ const elements = [
     category: null,
     therapies: [],
     resources: [
-      'https://pubchem.ncbi.nlm.nih.gov/compound/124886',
-      'https://medlineplus.gov/genetics/condition/glutathione-synthetase-deficiency/',
+      'pubchem.ncbi.nlm.nih.gov/compound/124886',
+      'medlineplus.gov/genetics/condition/glutathione-synthetase-deficiency/',
     ],
   },
   {
     id: 21,
-    aka: null,
     name: 'L-Taurine',
+    aka: null,
     category: null,
   },
   {
     id: 22,
-    aka: null,
     name: 'Alpha-Lipoic Acid',
+    aka: null,
     category: null,
+    resources: [
+      'www.mskcc.org/cancer-care/integrative-medicine/herbs/alpha-lipoic-acid',
+      'www.mountsinai.org/health-library/supplement/alpha-lipoic-acid',
+      'www.ncbi.nlm.nih.gov/books/NBK564301/',
+      'lpi.oregonstate.edu/mic/dietary-factors/lipoic-acid',
+    ],
   },
   {
     id: 23,
@@ -203,7 +215,7 @@ const elements = [
     name: 'cysteine',
     category: null,
     therapies: [],
-    resources: ['https://pubchem.ncbi.nlm.nih.gov/compound/cysteine'],
+    resources: ['pubchem.ncbi.nlm.nih.gov/compound/cysteine'],
   },
   {
     id: 24,

@@ -8,39 +8,39 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 2,
+            id: 1,
             name: 'Alleviate',
           },
           {
-            id: 12,
+            id: 4,
             name: 'Build - A - Bag',
           },
           {
-            id: 16,
+            id: 6,
             name: 'Energize',
           },
           {
-            id: 1,
+            id: 8,
             name: '#I’ll never Drink Again',
           },
           {
-            id: 25,
+            id: 10,
             name: 'Myers',
           },
           {
-            id: 26,
+            id: 11,
             name: 'Myers Pro',
           },
           {
-            id: 27,
+            id: 12,
             name: 'NAD+ Rejuvenate',
           },
           {
-            id: 33,
+            id: 14,
             name: 'Rehydrate',
           },
           {
-            id: 35,
+            id: 17,
             name: 'Supa Gluta',
           },
         ],
@@ -50,15 +50,15 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 6,
+            id: 20,
             name: 'B12 (Hydroxocobolomin)',
           },
           {
-            id: 10,
+            id: 22,
             name: 'Booster Bag',
           },
           {
-            id: 21,
+            id: 23,
             name: 'L-Taurine',
           },
           {
@@ -66,11 +66,11 @@ const target_systems = [
             name: 'Magnesium Chloride',
           },
           {
-            id: 8,
+            id: 25,
             name: 'Bi-Amino Blend',
           },
           {
-            id: 38,
+            id: 26,
             name: 'Zinc Sulfate',
           },
         ],
@@ -80,7 +80,7 @@ const target_systems = [
         name: 'IVPB - Push Booster',
         therapies: [
           {
-            id: 3,
+            id: 27,
             name: 'Alpha-Lipoic Acid (ALA)',
           },
         ],
@@ -90,23 +90,23 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 6,
+            id: 31,
             name: 'B12 (Hydroxocobolomin)',
           },
           {
-            id: 23,
+            id: 36,
             name: 'Lipo-C',
           },
           {
-            id: 22,
+            id: 37,
             name: 'Lipo-B',
           },
           {
-            id: 27,
+            id: 39,
             name: 'NAD+ Rejuvenate',
           },
           {
-            id: 8,
+            id: 40,
             name: 'Bi-Amino Blend',
           },
         ],
@@ -127,11 +127,11 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 11,
+            id: 5,
             name: 'Brainpower',
           },
           {
-            id: 37,
+            id: 18,
             name: 'Zen',
           },
         ],
@@ -141,7 +141,7 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 8,
+            id: 25,
             name: 'Bi-Amino Blend',
           },
         ],
@@ -156,7 +156,7 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 8,
+            id: 40,
             name: 'Bi-Amino Blend',
           },
         ],
@@ -177,31 +177,31 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 18,
+            id: 7,
             name: 'High-C Infusion',
           },
           {
-            id: 20,
+            id: 9,
             name: 'Immunity',
           },
           {
-            id: 30,
+            id: 13,
             name: 'Pregame',
           },
           {
-            id: 33,
+            id: 14,
             name: 'Rehydrate',
           },
           {
-            id: 32,
+            id: 16,
             name: 'Quick Slim Pro',
           },
           {
-            id: 35,
+            id: 17,
             name: 'Supa Gluta',
           },
           {
-            id: 37,
+            id: 18,
             name: 'Zen',
           },
         ],
@@ -211,11 +211,11 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 4,
+            id: 19,
             name: 'Ascorbic Acid (Vitamin C)',
           },
           {
-            id: 21,
+            id: 23,
             name: 'L-Taurine',
           },
         ],
@@ -225,7 +225,7 @@ const target_systems = [
         name: 'IVPB - Push Booster',
         therapies: [
           {
-            id: 17,
+            id: 28,
             name: 'Glutathione',
           },
         ],
@@ -235,11 +235,11 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 13,
+            id: 33,
             name: 'CoQ10',
           },
           {
-            id: 17,
+            id: 35,
             name: 'Glutathione',
           },
         ],
@@ -260,7 +260,7 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 2,
+            id: 1,
             name: 'Alleviate',
           },
         ],
@@ -275,11 +275,11 @@ const target_systems = [
         name: 'IVPB - Push Booster',
         therapies: [
           {
-            id: 3,
+            id: 27,
             name: 'Alpha-Lipoic Acid (ALA)',
           },
           {
-            id: 36,
+            id: 29,
             name: 'Toradol (Ketorolac)',
           },
         ],
@@ -289,7 +289,7 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 36,
+            id: 38,
             name: 'Toradol (Ketorolac)',
           },
         ],
@@ -310,15 +310,15 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 5,
+            id: 2,
             name: 'Athletic Recovery',
           },
           {
-            id: 16,
+            id: 6,
             name: 'Energize',
           },
           {
-            id: 30,
+            id: 13,
             name: 'Pregame',
           },
         ],
@@ -328,11 +328,11 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 6,
+            id: 20,
             name: 'B12 (Hydroxocobolomin)',
           },
           {
-            id: 8,
+            id: 25,
             name: 'Bi-Amino Blend',
           },
         ],
@@ -347,11 +347,11 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 6,
+            id: 31,
             name: 'B12 (Hydroxocobolomin)',
           },
           {
-            id: 8,
+            id: 40,
             name: 'Bi-Amino Blend',
           },
         ],
@@ -372,7 +372,7 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 7,
+            id: 3,
             name: 'Beautify',
           },
         ],
@@ -382,7 +382,7 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 40,
+            id: 21,
             name: 'Biotin',
           },
         ],
@@ -392,7 +392,7 @@ const target_systems = [
         name: 'IVPB - Push Booster',
         therapies: [
           {
-            id: 17,
+            id: 28,
             name: 'Glutathione',
           },
         ],
@@ -402,11 +402,11 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 40,
+            id: 32,
             name: 'Biotin',
           },
           {
-            id: 17,
+            id: 35,
             name: 'Glutathione',
           },
         ],
@@ -427,20 +427,16 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 18,
+            id: 7,
             name: 'High-C Infusion',
           },
           {
-            id: 20,
+            id: 9,
             name: 'Immunity',
           },
           {
-            id: 35,
+            id: 17,
             name: 'Supa Gluta',
-          },
-          {
-            id: 4,
-            name: 'Ascorbic Acid (Vitamin C)',
           },
         ],
       },
@@ -449,11 +445,15 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 21,
+            id: 19,
+            name: 'Ascorbic Acid (Vitamin C)',
+          },
+          {
+            id: 23,
             name: 'L-Taurine',
           },
           {
-            id: 38,
+            id: 26,
             name: 'Zinc Sulfate',
           },
         ],
@@ -484,11 +484,11 @@ const target_systems = [
         name: 'IVI - Infusion',
         therapies: [
           {
-            id: 31,
+            id: 15,
             name: 'Quick Slim',
           },
           {
-            id: 32,
+            id: 16,
             name: 'Quick Slim Pro',
           },
         ],
@@ -498,15 +498,15 @@ const target_systems = [
         name: 'IVB - Infusion Booster',
         therapies: [
           {
-            id: 6,
+            id: 20,
             name: 'B12 (Hydroxocobolomin)',
           },
           {
-            id: 40,
+            id: 21,
             name: 'Biotin',
           },
           {
-            id: 38,
+            id: 26,
             name: 'Zinc Sulfate',
           },
         ],
@@ -516,7 +516,7 @@ const target_systems = [
         name: 'IVPB - Push Booster',
         therapies: [
           {
-            id: 3,
+            id: 27,
             name: 'Alpha-Lipoic Acid (ALA)',
           },
         ],
@@ -526,15 +526,15 @@ const target_systems = [
         name: 'IM - Injectable',
         therapies: [
           {
-            id: 6,
+            id: 31,
             name: 'B12 (Hydroxocobolomin)',
           },
           {
-            id: 23,
+            id: 36,
             name: 'Lipo-C',
           },
           {
-            id: 22,
+            id: 37,
             name: 'Lipo-B',
           },
         ],
@@ -544,7 +544,7 @@ const target_systems = [
         name: 'SC - Injectable',
         therapies: [
           {
-            id: 34,
+            id: 41,
             name: 'Semaglutide/Cyanocobalamin',
           },
         ],

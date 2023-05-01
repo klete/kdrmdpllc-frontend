@@ -115,4 +115,14 @@ const showModal = computed(() => {
 footer {
   height: 5rem;
 }
+
+.caution,
+.caution-label {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+em {
+  font-weight: 900;
+}
 </style>
