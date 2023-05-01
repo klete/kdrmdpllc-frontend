@@ -231,7 +231,7 @@ const therapies = [
     indications:
       'Patients that request high dose Vitamin C infusion without contraindication. ',
     contraindications: '',
-    cautions: ['High C infusion <em>CANNOT</em> receive any other Vitamin C'],
+    cautions: ['High C infusion CANNOT receive any other Vitamin C'],
     description:
       "Vitamin C is necessary for the growth, development, and repair of all body tissues. It's involved in many body functions, including formation of collagen, absorption of iron, the immune system, wound healing, and the maintenance of cartilage, bones, and teeth. It can also aid the acutely ill by giving vitality to leukocytes. Also is a powerful antioxidant and energy booster. ",
     focus: [

@@ -213,6 +213,7 @@ table + table {
 
 h2 {
   margin: 1rem 2rem 1rem 2.5rem;
+  font-weight: 600;
 }
 
 h3 {
@@ -223,6 +224,8 @@ h3 {
   padding: 1rem;
   text-align: left;
   margin: 1rem 0 2rem 0;
+  color: white;
+  font-weight: 600;
 }
 
 th,
@@ -234,11 +237,6 @@ td {
 th {
   text-align: left;
   background: hsl(276 100% 19% / 0.2);
-}
-
-th a,
-td a {
-  color: white;
 }
 
 td.amount {
@@ -257,5 +255,15 @@ ul {
 
 p.spacer {
   height: 2rem;
+}
+
+html[color-scheme='light'] h2 {
+  color: hsl(276 100% 19%);
+}
+
+html[color-scheme='light'] th,
+html[color-scheme='light'] td {
+  color: hsl(276 100% 19%);
+  font-weight: 600;
 }
 </style>

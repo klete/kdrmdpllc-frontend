@@ -64,4 +64,15 @@ th a,
 td a {
   color: white;
 }
+
+html[color-scheme='light'] td.service {
+  color: white;
+}
+
+html[color-scheme='light'] th,
+html[color-scheme='light'] td,
+html[color-scheme='light'] th a,
+html[color-scheme='light'] td a {
+  color: hsl(276 100% 19%);
+}
 </style>

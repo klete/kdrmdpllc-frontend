@@ -86,12 +86,13 @@ onMounted(() => {
   updateDisplay(theme.value)
 })
 
-function updateDisplay(theme) {
-  document.querySelector(':root').setAttribute('color-scheme', `${theme.value}`)
+function updateDisplay(new_theme) {
+  const root = document.querySelector(':root') // html tag
+  root.setAttribute('color-scheme', `${new_theme}`)
 }
 
-function storeTheme(theme) {
-  localStorage.setItem('theme', theme.value)
+function storeTheme(new_theme) {
+  localStorage.setItem('theme', new_theme)
 }
 
 function getSystemTheme() {
@@ -155,7 +156,8 @@ function closeMenu() {
 }
 
 function initTheme() {
-  theme.value = getStoredTheme() || getSystemTheme()
+  const init_theme = getStoredTheme() || getSystemTheme()
+  theme.value = init_theme
 }
 
 function toggleTheme() {

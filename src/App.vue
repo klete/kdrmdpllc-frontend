@@ -121,8 +121,4 @@ footer {
   font-weight: 700;
   text-decoration: underline;
 }
-
-em {
-  font-weight: 900;
-}
 </style>
