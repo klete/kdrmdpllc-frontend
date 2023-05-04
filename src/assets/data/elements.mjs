@@ -1,22 +1,19 @@
 const elements = [
   {
+    id: 11,
+    name: 'vitamin c',
+    aka: 'ascorbic acid',
+    category: null,
+
+    therapies: [],
+  },
+
+  {
     id: 1,
     name: 'vitamin B-1',
     aka: 'thiamin',
     category: 'Vitamin B Complex',
-    therapies: [
-      {
-        id: null,
-        name: 'name',
-        amount: null,
-        elemental_units_per: 'mg',
-        volume_units: 'mL',
-        volume_infused: null,
-        volume_infused_units: 'mL',
-        amount_element_infused: null,
-        element_infused_units: 'mg',
-      },
-    ],
+    therapies: [],
   },
   {
     id: 2,
@@ -47,19 +44,7 @@ const elements = [
     name: 'vitamin B-7',
     aka: 'biotin',
     category: 'Vitamin B Complex',
-    therapies: [
-      {
-        id: 7,
-        name: 'Beautify',
-        amount: 10,
-        elemental_units_per: 'mg',
-        volume_units: 'mL',
-        volume_infused: 1,
-        volume_infused_units: 'mL',
-        amount_element_infused: 10,
-        element_infused_units: 'mg',
-      },
-    ],
+    therapies: [],
   },
   {
     id: 7,
@@ -85,53 +70,7 @@ const elements = [
     aka: null,
     category: null,
   },
-  {
-    id: 11,
-    name: 'vitamin c',
-    aka: 'ascorbic acid',
-    category: null,
-    resources: [
-      'pubmed.ncbi.nlm.nih.gov/29567393/',
-      'www.sciencedirect.com/topics/medicine-and-dentistry/ascorbic-acid-metabolism',
-      'pubchem.ncbi.nlm.nih.gov/compound/ascorbic-acid#section=DSSTox-Substance-ID',
-      'pubchem.ncbi.nlm.nih.gov/source/hsdb/818#section=Metabolism-Pharmacokinetics',
-    ],
-    therapies: [
-      {
-        id: 5,
-        name: 'Athletic Recovery',
-        amount: 100,
-        elemental_units_per: 'mg',
-        volume_units: 'mL',
-        volume_infused: 5,
-        volume_infused_units: 'mL',
-        amount_element_infused: 500,
-        element_infused_units: 'mg',
-      },
-      {
-        id: 7,
-        name: 'Beautify',
-        amount: 500,
-        elemental_units_per: 'mg',
-        volume_units: 'mL',
-        volume_infused: 20,
-        volume_infused_units: 'mL',
-        amount_element_infused: 10000,
-        element_infused_units: 'mg',
-      },
-      {
-        id: 18,
-        name: 'High-C Infusion',
-        amount: 500,
-        elemental_units_per: 'mg',
-        volume_units: 'mL',
-        volume_infused: 100,
-        volume_infused_units: 'mL',
-        amount_element_infused: 50000,
-        element_infused_units: 'mg',
-      },
-    ],
-  },
+
   {
     id: 12,
     aka: null,
@@ -186,10 +125,6 @@ const elements = [
     name: 'glutathione',
     category: null,
     therapies: [],
-    resources: [
-      'pubchem.ncbi.nlm.nih.gov/compound/124886',
-      'medlineplus.gov/genetics/condition/glutathione-synthetase-deficiency/',
-    ],
   },
   {
     id: 21,
@@ -202,12 +137,6 @@ const elements = [
     name: 'Alpha-Lipoic Acid',
     aka: null,
     category: null,
-    resources: [
-      'www.mskcc.org/cancer-care/integrative-medicine/herbs/alpha-lipoic-acid',
-      'www.mountsinai.org/health-library/supplement/alpha-lipoic-acid',
-      'www.ncbi.nlm.nih.gov/books/NBK564301/',
-      'lpi.oregonstate.edu/mic/dietary-factors/lipoic-acid',
-    ],
   },
   {
     id: 23,
@@ -309,6 +238,14 @@ const elements = [
     id: 35,
     aka: 'ondansetron',
     name: 'zofran',
+    category: null,
+    therapies: [],
+    resources: [],
+  },
+  {
+    id: 36,
+    aka: null,
+    name: 'vitamin D',
     category: null,
     therapies: [],
     resources: [],

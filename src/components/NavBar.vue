@@ -62,7 +62,7 @@ const router = useRouter()
 const theme = ref(null)
 let timeout = null
 
-const { user } = getUser()
+const user = getUser()
 
 const isAuthenticated = computed(() => {
   return !!user.value?.uid

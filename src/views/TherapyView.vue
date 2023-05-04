@@ -2,7 +2,7 @@
   <article v-if="selectedTherapy">
     <h2>{{ selectedTherapy.name }}</h2>
 
-    <div class="table-container">
+    <section class="table-container">
       <h3>
         Meta data
       </h3>
@@ -25,9 +25,10 @@
                 <li
                   v-for="(c, i) in selectedTherapy.contraindications"
                   :key="i"
-                ></li>
+                >
+                  {{ c }}
+                </li>
               </ul>
-              {{ c }}
             </td>
             <td v-else>{{ selectedTherapy.contraindications }}</td>
           </tr>
@@ -38,10 +39,23 @@
                 <li
                   v-for="(caution, index) in selectedTherapy.cautions"
                   :key="index"
+                  class="caution"
                 >
-                  <span v-html="caution" class="caution"></span>
+                  <span v-html="caution"></span>
                 </li>
               </ul>
+            </td>
+          </tr>
+          <tr v-if="selectedTherapy.recommendations">
+            <td>Recommendations:</td>
+            <td>
+              <div
+                class="recommendation"
+                v-for="(item, index) in selectedTherapy.recommendations"
+                :key="index"
+              >
+                <span v-html="item"></span>
+              </div>
             </td>
           </tr>
           <tr>
@@ -61,14 +75,7 @@
           <tr>
             <td>Frequency:</td>
             <td>
-              <ul>
-                <li
-                  v-for="(value, key) in selectedTherapy.frequency"
-                  :key="key"
-                >
-                  {{ key }}: {{ value }}
-                </li>
-              </ul>
+              <FrequencyList :frequency="selectedTherapy.frequency" />
             </td>
           </tr>
           <tr>
@@ -77,80 +84,76 @@
           </tr>
         </tbody>
       </table>
+    </section>
 
-      <p class="spacer"></p>
+    <section
+      v-if="selectedTherapy?.elements?.length > 0"
+      class="table-container"
+    >
       <h3>
         Elements
       </h3>
 
-      <table>
+      <table class="elements">
         <thead>
           <th></th>
           <th></th>
           <th>Amount</th>
-
           <th>Volume Infused</th>
-
           <th>Amount Infused</th>
         </thead>
-        <tbody>
-          <tr v-for="element in selectedTherapy.elements" :key="element.id">
-            <td v-if="Array.isArray(element)">
-              {{ element[0] }}
-            </td>
-            <td v-else></td>
-            <td v-if="Array.isArray(element)" class="name">
-              {{ element[1].name }}
-            </td>
-            <td v-else class="name">{{ element.name }}</td>
-            <td v-if="Array.isArray(element)" class="amount">
-              {{ element[1].amount }} {{ element[1].elemental_units_per }} /
-              {{ element[1].volume_units }}
-            </td>
-            <td v-else class="amount">
-              {{ element.amount }} {{ element.elemental_units_per }} /
-              {{ element.volume_units }}
-            </td>
-            <td v-if="Array.isArray(element)" class="amount">
-              {{ element[1].volume_infused }}
-              {{ element[1].volume_infused_units }}
-            </td>
-            <td v-else class="amount">
-              {{ element.volume_infused }}
-              {{ element.volume_infused_units }}
-            </td>
-            <td v-if="Array.isArray(element)" class="amount">
-              {{ element[1].amount_element_infused }}
-              {{ element[1].element_infused_units }}
-            </td>
-            <td v-else class="amount">
-              {{ element.amount_element_infused }}
-              {{ element.element_infused_units }}
-            </td>
-          </tr>
+        <tbody v-for="element in selectedTherapy.elements" :key="element.id">
+          <Element :element="element" />
         </tbody>
       </table>
+    </section>
 
-      <table>
+    <section
+      v-if="selectedTherapy?.packages?.length > 0"
+      class="table-container"
+    >
+      <h3>
+        Elements
+      </h3>
+      <table class="elements">
+        <thead>
+          <th colspan="2"></th>
+          <th>Amount</th>
+          <th>Volume Infused</th>
+          <th>Amount Infused</th>
+        </thead>
+        <tbody v-for="_package in selectedTherapy.packages" :key="_package.id">
+          <Package v-if="_package.label" :package="_package" />
+          <Element v-else :element="_package" />
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-container" v-if="selectedTherapy.substrate.name">
+      <table class="elements">
+        <thead>
+          <tr>
+            <th colspan="3">Substrate</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td>Substrate</td>
             <td>{{ selectedTherapy.substrate.name }}</td>
             <td class="amount">
               {{ selectedTherapy.substrate.amount }}
             </td>
             <td>{{ selectedTherapy.substrate.units }}</td>
-            <td colspan="5"></td>
           </tr>
         </tbody>
       </table>
+    </section>
 
-      <table>
+    <section class="table-container" v-if="selectedTherapy.infusion?.minimum">
+      <table class="elements">
         <thead>
           <tr>
-            <th></th>
-            <th></th>
+            <th>Infusion rate</th>
+
             <th v-if="selectedTherapy.infusion?.initial">Initial</th>
             <th v-if="selectedTherapy.infusion?.minimum">Minimum</th>
             <th v-if="selectedTherapy.infusion?.maximum">Maximum</th>
@@ -159,7 +162,6 @@
         <tbody>
           <tr>
             <td></td>
-            <td>Infusion rate</td>
             <td v-if="selectedTherapy.infusion?.initial">
               {{ selectedTherapy.infusion?.initial }}
             </td>
@@ -172,12 +174,15 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </section>
   </article>
 </template>
 
 <script setup>
 import Therapies from '@/assets/data/therapies.mjs'
+import Element from '../components/Element.vue'
+import FrequencyList from '../components/FrequencyList.vue'
+import Package from '../components/Package.vue'
 
 const therapies = Therapies.therapies
 
@@ -192,22 +197,21 @@ article {
   font-size: 1.35rem;
   font-family: system-ui;
   line-height: 1.5;
-  /* width: min(1200px, 100% - 3rem); */
+
   width: 1200px;
   margin-inline: auto;
 }
 
-.table-container {
-  margin: 1rem 2rem;
+section.table-container {
+  margin: 2rem 2rem;
+  padding: 0 1rem 1rem;
   max-width: 100%;
   overflow-x: auto;
+  /* border: 1px solid white; */
+  background-color: hsl(192 19% 45% / 1);
 }
 
-table {
-  border-collapse: collapse;
-}
-
-table + table {
+section + section {
   margin-top: 3rem;
 }
 
@@ -226,6 +230,11 @@ h3 {
   margin: 1rem 0 2rem 0;
   color: white;
   font-weight: 600;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 15rem;
 }
 
 th,
@@ -247,14 +256,19 @@ td.name {
   text-transform: capitalize;
 }
 
+/* table.elements th,
+table.elements td {
+  border: 1px solid white;
+} */
+
 ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-p.spacer {
-  height: 2rem;
+.recommendation:not(:last-child):not(:first-child) {
+  padding-top: 0.75rem;
 }
 
 html[color-scheme='light'] h2 {

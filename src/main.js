@@ -4,7 +4,6 @@ import App from './App.vue'
 import router from './router'
 import { GStore } from './store'
 
-import BaseDialog from './components/BaseDialog.vue'
 import Modal from './components/Modal.vue'
 
 import './assets/css/reset.css'
@@ -24,7 +23,6 @@ onAuthStateChanged(auth, () => {
   if (!app) {
     app = createApp(App)
     app.use(router)
-    app.component('base-dialog', BaseDialog)
     app.component('modal', Modal)
     app.provide('GStore', GStore)
     app.mount('#app')

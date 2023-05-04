@@ -1,0 +1,103 @@
+<template>
+  <tr v-if="Array.isArray(element)">
+    <td class="name">
+      {{ element[0] }}
+    </td>
+
+    <td class="name">
+      {{ element[1].name }}
+    </td>
+
+    <td class="amount">
+      {{ formatNumber(element[1].amount) }} {{ element[1].elemental_units_per }}
+      <span v-if="element[1].amount">/</span>
+      {{ element[1].volume_units }}
+    </td>
+
+    <td class="amount">
+      {{ formatNumber(element[1].volume_infused) }}
+      {{ element[1].volume_infused_units }}
+    </td>
+
+    <td class="amount">
+      {{ formatNumber(element[1].amount_element_infused) }}
+      {{ element[1].element_infused_units }}
+    </td>
+  </tr>
+  <tr v-else-if="typeof element == 'string'">
+    <td colspan="2">
+      {{ element }}
+    </td>
+    <td colspan="3"></td>
+  </tr>
+  <tr v-else>
+    <td></td>
+    <td class="name">{{ element.name }}</td>
+
+    <td class="amount">
+      {{ formatNumber(element.amount) }} {{ element.elemental_units_per }}
+      <span v-if="element.amount">/</span>
+      {{ element.volume_units }}
+    </td>
+
+    <td class="amount">
+      {{ formatNumber(element.volume_infused) }}
+      {{ element.volume_infused_units }}
+    </td>
+
+    <td class="amount">
+      {{ formatNumber(element.amount_element_infused) }}
+      {{ element.element_infused_units }}
+    </td>
+  </tr>
+</template>
+
+<script setup>
+const props = defineProps(['element'])
+
+function formatNumber(num) {
+  if (typeof num == 'string') {
+    num = Number(num)
+    if (Number.isNaN(num)) return null
+  }
+  if (typeof num == 'number') {
+    return num.toLocaleString()
+  }
+
+  return null
+}
+</script>
+
+<style scoped>
+th,
+td {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  vertical-align: top;
+  /* border: 1px solid white; */
+}
+
+th {
+  text-align: left;
+  background: hsl(276 100% 19% / 0.2);
+}
+
+td.amount {
+  text-align: right;
+}
+
+td.name {
+  text-transform: capitalize;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+html[color-scheme='light'] th,
+html[color-scheme='light'] td {
+  color: hsl(276 100% 19%);
+  font-weight: 600;
+}
+</style>

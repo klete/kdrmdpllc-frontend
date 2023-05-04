@@ -1,9 +1,34 @@
 import {
+  l_carnitine_500_2,
+  vitamin_b_1_100_1,
+  vitamin_b_3_100_1,
+  vitamin_b_2_2_1,
+  vitamin_b_5_2_1,
+  vitamin_b_6_2_1,
+  vitamin_b_12_2_1,
+  basic_b_vitamin_set,
+  magnesium_chloride_300_0__5,
+  magnesium_chloride_300_1,
+  magnesium_chloride_300_4,
+  magnesium_chloride_300_2,
+  calcium_gluconate_100_1,
+  cyanocobalamin_50_1,
+  methionine_15_1,
+  choline_50_1,
+  l_carnitine_50_1,
+  thiamine_15_1,
+  dexpanthenol_5_1,
+  vitamin_d_1000000_0__5,
+  coq10_20_3,
+  zofran_2_2,
+  toradol_15_1,
   calcium_gluconate_100_5,
   substrate_ringers,
   substrate_saline,
   alpha_lipoic_acid_25_5,
   biotin_10_1,
+  glutathione_200_2__5,
+  glutathione_200_1,
   glutathione_200_5,
   glutathione_200_10,
   copper_0__3_0__5,
@@ -12,30 +37,42 @@ import {
   manganese_55_0__5,
   arginine_100_5,
   citrulline_100_5,
+  arginine_100_1,
+  citrulline_100_1,
+  arginine_100_2,
+  citrulline_100_2,
   zinc_3_1,
   manganese_55_1,
   copper_0__3_1,
   selenium_60_1,
-  vitamin_b_12_2_1,
   lysine_100_2__5,
   l_taurine_50_1,
   l_taurine_50_5,
   l_taurine_50_10,
-  magnesium_chloride_300_4,
-  magnesium_chloride_300_2,
   glycine_50_5,
   glycine_50_10,
   hydroxocobalamin_2_0__5,
   hydroxocobalamin_2_1,
-  basic_b_vitamin_set,
   vitamin_c_100_5,
   vitamin_c_500_20,
   vitamin_c_500_100,
   vitamin_c_500_25,
   vitamin_c_500_1,
+  vitamin_c_500_5,
   vitamin_c_500_10,
+  zinc_sulfate_10_0__5,
   zinc_sulfate_10_1,
+  bi_amino_blend_1,
+  bi_amino_blend_2,
 } from './therapy_elements.mjs'
+
+import {
+  vitamin_b_complex,
+  bi_amino_blend,
+  tralement_blend,
+  lipo_c,
+  lipo_b,
+} from './packages.mjs'
 
 const therapies = [
   {
@@ -64,8 +101,15 @@ const therapies = [
     elements: [
       calcium_gluconate_100_5,
       magnesium_chloride_300_4,
+      'Vitamin B Complex',
       ...basic_b_vitamin_set,
       vitamin_b_12_2_1,
+    ],
+    packages: [
+      calcium_gluconate_100_5,
+      magnesium_chloride_300_4,
+      vitamin_b_complex,
+      hydroxocobalamin_2_1,
     ],
   },
 
@@ -94,15 +138,27 @@ const therapies = [
     substrate: substrate_ringers,
     elements: [
       vitamin_c_100_5,
+      'Vitamin B Complex',
       ...basic_b_vitamin_set,
+      'Bi-Amino Blend',
       arginine_100_5,
       citrulline_100_5,
+      '',
       glycine_50_10,
       lysine_100_2__5,
+      'Tralement Blend',
       zinc_3_0__5,
       manganese_55_0__5,
       copper_0__3_0__5,
       selenium_60_0__5,
+    ],
+    packages: [
+      vitamin_c_100_5,
+      vitamin_b_complex,
+      bi_amino_blend,
+      glycine_50_10,
+      lysine_100_2__5,
+      tralement_blend,
     ],
   },
 
@@ -134,6 +190,11 @@ const therapies = [
       ['', biotin_10_1],
       ['SIVP', glutathione_200_5],
     ],
+    packages: [
+      ['', vitamin_c_500_20],
+      ['', biotin_10_1],
+      ['SIVP', glutathione_200_5],
+    ],
   },
 
   {
@@ -160,6 +221,7 @@ const therapies = [
     },
     substrate: substrate_ringers,
     elements: [],
+    packages: [],
   },
 
   {
@@ -186,6 +248,11 @@ const therapies = [
     },
     substrate: substrate_ringers,
     elements: [hydroxocobalamin_2_1, l_taurine_50_5, alpha_lipoic_acid_25_5],
+    packages: [
+      hydroxocobalamin_2_1,
+      l_taurine_50_5,
+      ['SIVP', alpha_lipoic_acid_25_5],
+    ],
   },
 
   {
@@ -215,6 +282,13 @@ const therapies = [
       ...basic_b_vitamin_set,
       arginine_100_5,
       citrulline_100_5,
+      glycine_50_10,
+      lysine_100_2__5,
+      l_taurine_50_5,
+    ],
+    packages: [
+      vitamin_b_complex,
+      bi_amino_blend,
       glycine_50_10,
       lysine_100_2__5,
       l_taurine_50_5,
@@ -251,6 +325,7 @@ const therapies = [
     },
     substrate: substrate_saline,
     elements: [vitamin_c_500_100],
+    packages: [vitamin_c_500_100],
   },
 
   {
@@ -285,6 +360,12 @@ const therapies = [
       l_taurine_50_5,
       magnesium_chloride_300_2,
     ],
+    packages: [
+      vitamin_b_complex,
+      tralement_blend,
+      l_taurine_50_5,
+      magnesium_chloride_300_2,
+    ],
   },
 
   {
@@ -311,6 +392,7 @@ const therapies = [
     },
     substrate: substrate_ringers,
     elements: [vitamin_c_500_25, ...basic_b_vitamin_set, zinc_sulfate_10_1],
+    packages: [vitamin_c_500_25, vitamin_b_complex, zinc_sulfate_10_1],
   },
 
   {
@@ -320,19 +402,47 @@ const therapies = [
       id: 1,
       name: 'IVI - Infusion',
     },
-    indications: '',
+    indications:
+      'Patients that request the Myer’s Cocktail infusion without contraindication. ',
     contraindications: '',
     cautions: [],
-    description: '',
-    focus: [],
-    frequency: null,
+    description:
+      'Myer’s Cocktail is great for the overall health and wellbeing of the guest. Specifically, Myer’s Cocktail has been shown to help with headaches, muscle cramps, boost energy levels, allergies, depression, cold and flu, and much more! ',
+    focus: [
+      'General health',
+      'Headaches',
+      'Muscle cramps',
+      'Energy boost',
+      'Allergies',
+      'Depression',
+      'Cold & Flu',
+    ],
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
-      minimum: null,
-      maximum: null,
+      minimum: '25 minutes',
+      maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    elements: [...basic_b_vitamin_set],
+    elements: [
+      ...basic_b_vitamin_set,
+      magnesium_chloride_300_0__5,
+      hydroxocobalamin_2_0__5,
+      calcium_gluconate_100_1,
+      vitamin_c_500_1,
+    ],
+    packages: [
+      vitamin_b_complex,
+      magnesium_chloride_300_0__5,
+      hydroxocobalamin_2_0__5,
+      calcium_gluconate_100_1,
+      vitamin_c_500_1,
+    ],
+    resources: [
+      'https://wellnesspharmacy.com/wp-content/uploads/2015/01/myers_cocktail.pdf',
+    ],
   },
 
   {
@@ -342,43 +452,77 @@ const therapies = [
       id: 1,
       name: 'IVI - Infusion',
     },
-    indications: '',
+    indications:
+      'Patients that request the Myer’s Pro Cocktail infusion without contraindication. ',
     contraindications: '',
     cautions: [],
-    description: '',
-    focus: [],
+    description:
+      'Myer’s Pro Cocktail is great for the overall health and wellbeing of the guest. Specifically, Myer’s Pro Cocktail has been shown to help with headaches, muscle cramps, boost energy levels, allergies, depression, cold and flu, and much more! ',
+    focus: [
+      'General health',
+      'Headaches',
+      'Muscle cramps',
+      'Energy boost',
+      'Allergies',
+      'Depression',
+      'Cold & Flu',
+    ],
     frequency: null,
     source: 'Empower',
     infusion: {
-      minimum: null,
-      maximum: null,
+      minimum: '25 minutes',
+      maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    elements: [...basic_b_vitamin_set],
+    elements: [
+      ...basic_b_vitamin_set,
+      magnesium_chloride_300_0__5,
+      hydroxocobalamin_2_0__5,
+      calcium_gluconate_100_1,
+      vitamin_c_500_1,
+      zinc_sulfate_10_1,
+      l_taurine_50_5,
+    ],
+    packages: [
+      vitamin_b_complex,
+      magnesium_chloride_300_0__5,
+      hydroxocobalamin_2_0__5,
+      calcium_gluconate_100_1,
+      vitamin_c_500_1,
+      zinc_sulfate_10_1,
+      l_taurine_50_5,
+    ],
   },
 
   {
     id: 12,
     name: 'NAD+ Rejuvenate',
     category: {
-      id: 4,
-      name: 'IM - Injectable',
+      id: 1,
+      name: 'IVI - Infusion',
     },
     indications:
       'Patients that request the NAD+ Rejuvenate without contraindication.',
-    contraindications: 'Pregnancy and Breastfeeding',
-    recommendations:
-      'Frequency: Clinical recommended loading dose for NAD IM is to administer 100 mg once daily for 5 days in a row. After this series is completed, it is recommended that patients receive ongoing injections once weekly to maintain NAD levels in your system',
-    cautions: [
-      'Anxiety/Panic Attacks',
-      'Max Total Dose: Max total dosing includes all IV administration',
-      '100 mg IM daily',
+    contraindications: '',
+    recommendations: [
+      `There are two general administration recommendations for maximum benefits. 
+      First is to have a one-time infusion course that is between 4 to 5 days consecutively
+      utilizing below dosages followed by maintenance infusions thereafter.`,
+      `The second is to have weekly infusions with the same above doses for 5 weeks in a row followed by a rest phase.`,
+      `<span class="caution">Initial consultation must be completed before ordering the patient specific nutraceutical.</span>`,
+      `<span class="caution">It is suggested that on that day they receive a Myers or “like” infusion to optimize the guest's nutritional
+      status before NAD is administered to achieve max benefits.</span>`,
+      `<span class="caution">It is also recommended that Glutathione 500 mg be given 5-10 min before each NAD infusion.</span>`,
+      `Maintenance for any patient that received NAD in the last 12 months will be person dependent based on body habitus, lifestyle, and history of NAD use in the past.`,
+      `If one of the loading phases is completed, general recommendation of NAD use thereafter should be administered
+      no more than once a week.`,
+      `People can feel differences with as little as one infusion. `,
     ],
+    cautions: '',
     description: '',
     focus: [],
     frequency: {
-      loading: '1 day for 5 days',
-      maintenance: '5-7 days',
+      maximum: '7 days',
     },
     source: 'Empower',
     infusion: {
@@ -390,24 +534,46 @@ const therapies = [
     elements: [
       {
         id: 0,
-        name: 'loading',
-        amount: 100,
+        name: 'beginner',
+        amount: 250,
         elemental_units_per: 'mg',
         volume_units: 'mL',
         volume_infused: 1,
         volume_infused_units: 'mL',
-        amount_element_infused: 100,
+        amount_element_infused: 250,
         element_infused_units: 'mg',
       },
       {
         id: 0,
-        name: 'maintenance',
-        amount: 100,
+        name: 'standard',
+        amount: 250,
         elemental_units_per: 'mg',
         volume_units: 'mL',
-        volume_infused: 1,
+        volume_infused: 2,
         volume_infused_units: 'mL',
-        amount_element_infused: 100,
+        amount_element_infused: 500,
+        element_infused_units: 'mg',
+      },
+      {
+        id: 0,
+        name: 'premium',
+        amount: 250,
+        elemental_units_per: 'mg',
+        volume_units: 'mL',
+        volume_infused: 3,
+        volume_infused_units: 'mL',
+        amount_element_infused: 750,
+        element_infused_units: 'mg',
+      },
+      {
+        id: 0,
+        name: 'elite',
+        amount: 250,
+        elemental_units_per: 'mg',
+        volume_units: 'mL',
+        volume_infused: 4,
+        volume_infused_units: 'mL',
+        amount_element_infused: 1000,
         element_infused_units: 'mg',
       },
     ],
@@ -420,19 +586,49 @@ const therapies = [
       id: 1,
       name: 'IVI - Infusion',
     },
-    indications: '',
+    indications:
+      'Patients that request the Pregame infusion without contraindication. ',
     contraindications: '',
     cautions: [],
     description: '',
-    focus: [],
-    frequency: null,
+    focus: ['Athletic Performance', 'Athletic Recovery '],
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
       maximum: null,
     },
     substrate: substrate_ringers,
-    elements: [...basic_b_vitamin_set],
+    elements: [
+      ['', vitamin_c_500_1],
+      'Vitamin B Complex',
+      ['', vitamin_b_1_100_1],
+      ['', vitamin_b_3_100_1],
+      ['', vitamin_b_2_2_1],
+      ['', vitamin_b_5_2_1],
+      ['', vitamin_b_6_2_1],
+      ['', zinc_sulfate_10_1],
+      ['', hydroxocobalamin_2_1],
+      ['', l_taurine_50_1],
+      ['', magnesium_chloride_300_1],
+      ['', arginine_100_1],
+      ['', citrulline_100_1],
+      ['', calcium_gluconate_100_1],
+      ['SIVP', glutathione_200_1],
+    ],
+    packages: [
+      vitamin_c_500_1,
+      vitamin_b_complex,
+      zinc_sulfate_10_1,
+      hydroxocobalamin_2_1,
+      l_taurine_50_1,
+      magnesium_chloride_300_1,
+      bi_amino_blend,
+      calcium_gluconate_100_1,
+      ['SIVP', glutathione_200_1],
+    ],
   },
 
   {
@@ -455,6 +651,12 @@ const therapies = [
     },
     substrate: substrate_ringers,
     elements: [...basic_b_vitamin_set],
+    packages: [
+      vitamin_c_500_5,
+      vitamin_b_complex,
+      tralement_blend,
+      magnesium_chloride_300_2,
+    ],
   },
 
   {
@@ -477,6 +679,16 @@ const therapies = [
     },
     substrate: substrate_ringers,
     elements: [...basic_b_vitamin_set],
+    packages: [
+      biotin_10_1,
+      vitamin_b_complex,
+      hydroxocobalamin_2_1,
+      l_taurine_50_5,
+      bi_amino_blend,
+      glycine_50_10,
+      lysine_100_2__5,
+      ['SIVP', alpha_lipoic_acid_25_5],
+    ],
   },
 
   {
@@ -498,7 +710,19 @@ const therapies = [
       maximum: null,
     },
     substrate: substrate_ringers,
-    elements: [...basic_b_vitamin_set],
+
+    packages: [
+      biotin_10_1,
+      vitamin_b_complex,
+      hydroxocobalamin_2_1,
+      l_taurine_50_5,
+      bi_amino_blend,
+      glycine_50_10,
+      lysine_100_2__5,
+      l_carnitine_500_2,
+      ['SIVP', glutathione_200_2__5],
+      ['SIVP', alpha_lipoic_acid_25_5],
+    ],
   },
 
   {
@@ -524,7 +748,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    elements: [glutathione_200_10],
+    packages: [glutathione_200_10],
   },
 
   {
@@ -559,6 +783,15 @@ const therapies = [
       magnesium_chloride_300_4,
       glycine_50_5,
     ],
+    packages: [
+      vitamin_c_500_1,
+      vitamin_b_complex,
+      zinc_sulfate_10_1,
+      hydroxocobalamin_2_1,
+      l_taurine_50_1,
+      magnesium_chloride_300_4,
+      glycine_50_5,
+    ],
   },
 
   {
@@ -587,22 +820,30 @@ const therapies = [
       minimum: null,
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: {
+      name: null,
+      amount: null,
+      units: null,
+    },
     elements: [
       ['Single Boost', vitamin_c_500_10],
       ['Double Boost', vitamin_c_500_20],
+    ],
+    resources: [
+      'pubmed.ncbi.nlm.nih.gov/29567393/',
+      'www.sciencedirect.com/topics/medicine-and-dentistry/ascorbic-acid-metabolism',
+      'pubchem.ncbi.nlm.nih.gov/compound/ascorbic-acid#section=DSSTox-Substance-ID',
+      'pubchem.ncbi.nlm.nih.gov/source/hsdb/818#section=Metabolism-Pharmacokinetics',
     ],
   },
 
   {
     id: 20,
     name: 'B12 (Hydroxocobolomin)',
-
     category: {
       id: 2,
       name: 'IVB - Infusion Booster',
     },
-
     indications:
       'Patients that request the IV infusion boost without contraindication. ',
     contraindications: '',
@@ -654,7 +895,11 @@ const therapies = [
       minimum: null,
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: {
+      name: null,
+      amount: null,
+      units: null,
+    },
     elements: [['Single Boost', biotin_10_1]],
   },
 
@@ -709,7 +954,11 @@ const therapies = [
       minimum: null,
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: {
+      name: null,
+      amount: null,
+      units: null,
+    },
     elements: [
       ['Single Boost', l_taurine_50_5],
       ['Double Boost', l_taurine_50_10],
@@ -723,23 +972,38 @@ const therapies = [
       id: 2,
       name: 'IVB - Infusion Booster',
     },
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request the IV infusion without contraindication ',
+    contraindications: [
+      'Patients on Digitalis',
+      'Cardiovascular Disease',
+      'Individuals already taking daily magnesium supplement',
+    ],
+    cautions: [
+      '3 mL (900mg).',
+      'This is separate from the Alleviate infusion',
+      'MAX Total Dose:  in any infusion is 1,200 mg',
+    ],
+    description:
+      'This is an electrolyte that is essential for muscle function. Magnesium helps with smooth muscle relaxation including blood vessels and bronchi. ',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
-      maximum: null,
+      maximum: '30 minutes',
     },
     substrate: {
       name: null,
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [
+      ['Single boost', magnesium_chloride_300_2],
+      ['Double boost', magnesium_chloride_300_4],
+    ],
   },
 
   {
@@ -749,23 +1013,38 @@ const therapies = [
       id: 2,
       name: 'IVB - Infusion Booster',
     },
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request the IV infusion boost without contraindication ',
+    contraindications: 'Renal Disease',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      'Athletic Recovery, Energize, and Quick Slim Pro are the ONLY infusions that have 5 mL (500/500mg).',
+      'Independent from this infusion, the maximum allowed boost is 2 mL.',
+    ],
+    description:
+      'Helps to decrease acute and chronic liver disease. It is also used for many other conditions and can be used to improve athletic performance, prevent fatigue, improve concentration, and reduce muscle breakdown during intense exercise ',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
-      maximum: null,
+      maximum: '30 minutes',
     },
     substrate: {
       name: null,
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [
+      ['Single Boost', bi_amino_blend_1],
+      ['', arginine_100_1],
+      ['', citrulline_100_1],
+      ['Double Boost', bi_amino_blend_2],
+      ['', arginine_100_2],
+      ['', citrulline_100_2],
+    ],
   },
 
   {
@@ -775,23 +1054,33 @@ const therapies = [
       id: 2,
       name: 'IVB - Infusion Booster',
     },
-    indications: '',
+    indications:
+      'Patients that request the IV infusion boost without contraindication ',
     contraindications: '',
-    cautions: [],
-    description: '',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '1 mL (10 mg)',
+    ],
+    description:
+      "It is needed for the body's defensive (immune) system to properly work. It plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates.",
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
-      maximum: null,
+      maximum: '30 minutes',
     },
     substrate: {
       name: null,
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [
+      ['Single Boost', zinc_sulfate_10_0__5],
+      ['Double Boost', zinc_sulfate_10_1],
+    ],
   },
 
   {
@@ -826,6 +1115,12 @@ const therapies = [
       units: null,
     },
     elements: [alpha_lipoic_acid_25_5],
+    resources: [
+      'www.mskcc.org/cancer-care/integrative-medicine/herbs/alpha-lipoic-acid',
+      'www.mountsinai.org/health-library/supplement/alpha-lipoic-acid',
+      'www.ncbi.nlm.nih.gov/books/NBK564301/',
+      'lpi.oregonstate.edu/mic/dietary-factors/lipoic-acid',
+    ],
   },
 
   {
@@ -835,12 +1130,18 @@ const therapies = [
       id: 3,
       name: 'IVPB - Push Booster',
     },
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request this IV infusion boost without contraindication ',
+    contraindications: ['Pregnancy', 'Breast Feeding'],
+    cautions: [
+      'Max Total Dose: Max total dosing includes all Slow IV Push (SIVP 10-20 seconds) ',
+    ],
+    description:
+      'Potent antioxidant with the ability to boost immunity and energy along with aiding in the decrease of symptoms in many pulmonology, cardiac, and nervous system disorders ',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -851,9 +1152,15 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [
+      ['Single Boost: SIVP', glutathione_200_2__5],
+      ['Double Boost: SIVP', glutathione_200_5],
+    ],
+    resources: [
+      'pubchem.ncbi.nlm.nih.gov/compound/124886',
+      'medlineplus.gov/genetics/condition/glutathione-synthetase-deficiency/',
+    ],
   },
-
   {
     id: 29,
     name: 'Toradol (Ketorolac)',
@@ -862,13 +1169,26 @@ const therapies = [
       id: 3,
       name: 'IVPB - Push Booster',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request the IV infusion without contraindication ',
+    contraindications: [
+      'Contraindications:	Allergy to the medication',
+      'Pregnancy',
+      'Gastric Ulcers',
+      'Severe Gastritis',
+      'Renal Dysfunction',
+    ],
+    cautions: [
+      'Significant Cardiac Disease',
+      'Blood thinners or other anti platelet medications',
+      'Max Total Dose: Max total dosing includes all Slow IV Push (SIVP 10-20 seconds)',
+    ],
+    description:
+      'This is an NSAID based medication that helps aid in a wide array of general muscle pain or arthritic pain. Also, can be utilized as a migraine/Headache abortive ',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -879,7 +1199,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [['Single Boost SIVP', toradol_15_1]],
   },
 
   {
@@ -891,9 +1211,16 @@ const therapies = [
       name: 'IVPB - Push Booster',
     },
 
-    indications: '',
-    contraindications: '',
-    cautions: [],
+    indications:
+      'Patients that request the IV injection without contraindication. ',
+    contraindications: [
+      'Hypersensitivity/Allergic Reaction',
+      'Pregnancy before 11 weeks’ gestation',
+      'Prolonged QT Syndrome',
+    ],
+    cautions: [
+      'Max Total Dose: Max total dosing includes all Slow IV Push (SIVP 10-20 seconds)',
+    ],
     description: '',
     focus: [],
     frequency: null,
@@ -907,7 +1234,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [zofran_2_2],
   },
 
   {
@@ -919,12 +1246,19 @@ const therapies = [
       name: 'IM - Injectable',
     },
 
-    indications: '',
+    indications:
+      'Patients that request this IM injectable without contraindication',
     contraindications: '',
-    cautions: [],
-    description: '',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '0.5mL (1mg)',
+    ],
+    description:
+      'Reverses B12 deficiency and macrocytic anemia related to B12 deficiency. Helps to increase energy along with the ability to augment metabolism in weight management',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -935,7 +1269,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [hydroxocobalamin_2_1],
   },
 
   {
@@ -945,12 +1279,19 @@ const therapies = [
       id: 4,
       name: 'IM - Injectable',
     },
-    indications: '',
+    indications:
+      'Patients that request the IM injection without contraindication.',
     contraindications: '',
-    cautions: [],
-    description: '',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '1mL (10 mg)							',
+    ],
+    description:
+      'Helps in growth and regeneration of hair, nails, and skin. Also aids in breaking down fats and carbohydrates',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -961,7 +1302,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [biotin_10_1],
   },
 
   {
@@ -973,12 +1314,20 @@ const therapies = [
       name: 'IM - Injectable',
     },
 
-    indications: '',
+    indications:
+      'Patients that request this IM injectable without contraindication',
     contraindications: '',
-    cautions: [],
-    description: '',
+    cautions: [
+      'Those patients on antiplatelet therapy or blood thinners',
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '3 mL (60 mg)',
+    ],
+    description:
+      'CoQ10 is an essential antioxidant. It has the potential to help heart failure patients, Type II Diabetics with insulin resistance, hypertension, metabolic syndrome, and has the potential to decrease the prevalence of certain types of cancer and neurologic degenerative diseases',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '7 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -989,24 +1338,36 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [coq10_20_3],
   },
 
   {
     id: 34,
     name: 'D - Vitamin',
-
     category: {
       id: 4,
       name: 'IM - Injectable',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
+    indications:
+      'Patients that request this IM injectable without contraindication, or have a known and documented deficiency of Vitamin D',
+    contraindications: [
+      'Currently on daily oral regiment (any dose)',
+      'Pregnancy',
+      'Breast Feeding',
+      'Renal disease',
+      'Sarcoidosis',
+      'Active Cancer Patient',
+    ],
+    cautions: [
+      'Vitamin D Deficiency Requirements: Must provide Vitamin D blood level lab results to Nurse for verification to qualify for Vitamin D deficiency protocol.',
+      'Results must be within 30 days and without Vitamin D treatment',
+    ],
     description: '',
     focus: [],
-    frequency: null,
+    frequency: [
+      'Vitamin D Deficient:	7	days for 8-12 weeks',
+      'NON-Vitamin D Deficient:	21 days',
+    ],
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1017,7 +1378,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [vitamin_d_1000000_0__5],
   },
 
   {
@@ -1029,12 +1390,19 @@ const therapies = [
       name: 'IM - Injectable',
     },
 
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request this IM injectable without contraindication',
+    contraindications: ['Pregnancy', 'Breast Feeding'],
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '5mL (1,000mg)',
+    ],
+    description:
+      'Potent antioxidant with the ability to boost immunity and energy along with aiding in the decrease of symptoms in many pulmonology, cardiac, and nervous system disorders',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '1 day',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1045,24 +1413,29 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [glutathione_200_1],
   },
 
   {
     id: 36,
     name: 'Lipo-C',
-
     category: {
       id: 4,
       name: 'IM - Injectable',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request this IM injectable without contraindication',
+    contraindications: 'Breast Feeding',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration							',
+      '1mL(Methionine 15mg, Choline 50mg, L - Carnitine 50mg, Thiamine(B1) 15mg, Dexpanthenol 5mg / ml)',
+    ],
+    description:
+      'Reduces body fat, helps to cleanse the liver, and combats against stress and fatigue. Lipotropics are three amino acids that are essential for the health of your liver. In addition to the three main lipotropics, some shots have other vitamins in them to act as a catalyst',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1073,24 +1446,36 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [
+      methionine_15_1,
+      choline_50_1,
+      l_carnitine_50_1,
+      thiamine_15_1,
+      dexpanthenol_5_1,
+    ],
+    packages: [lipo_c],
   },
 
   {
     id: 37,
     name: 'Lipo-B',
-
     category: {
       id: 4,
       name: 'IM - Injectable',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request this IM injectable without contraindication',
+    contraindications: 'Breast Feeding',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '1mL (Methionine 25mg, Choline 50mg, Cyanocobalamin 1mg/ml)',
+    ],
+    description:
+      'Reduces body fat, helps to cleanse the liver, and combats against stress and fatigue. Lipotropics are three amino acids that are essential for the health of your liver. In addition to the three main lipotropics, some shots have other vitamins in them to act as a catalyst',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1101,24 +1486,38 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [methionine_15_1, choline_50_1, cyanocobalamin_50_1],
+    packages: [lipo_b],
   },
 
   {
     id: 38,
     name: 'Toradol (Ketorolac)',
-
     category: {
       id: 4,
       name: 'IM - Injectable',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request the IM infusion without contraindication ',
+    contraindications: [
+      'Allergy to the medication',
+      'Pregnancy',
+      'Gastric Ulcers',
+      'Severe Gastritis',
+      'Renal Dysfunction',
+    ],
+    cautions: [
+      'Significant Cardiac Disease',
+      'Blood thinners or other anti platelet medications',
+      'Max Total Dose: Max total dosing includes all IV administrations',
+      '1 mL (15mg)',
+    ],
+    description:
+      'This is an NSAID based medication that helps aid in a wide array of general muscle pain or arthritic pain. Also, can be utilized as a migraine/Headache abortive ',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '3 days',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1129,7 +1528,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [toradol_15_1],
   },
 
   {
@@ -1191,18 +1590,25 @@ const therapies = [
   {
     id: 40,
     name: 'Bi-Amino Blend',
-
     category: {
       id: 4,
       name: 'IM - Injectable',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
-    description: '',
+    indications:
+      'Patients that request the IV infusion boost without contraindication ',
+    contraindications: 'Renal Disease',
+    cautions: [
+      'Max Total Dose: Max total dosing includes all IV administration',
+      '2mL (Arginine 200mg, Citrulline 200mg/1mL)',
+      '	Athletic Recovery, Energize, and Quick Slim Pro are the ONLY infusions that have 5 mL (500/500mg).',
+      'Independent from this infusion, the maximum allowed boost is 2 mL.',
+    ],
+    description:
+      'Helps to decrease acute and chronic liver disease. It is also used for many other conditions and can be used to improve athletic performance, prevent fatigue, improve concentration, and reduce muscle breakdown during intense exercise ',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '1 day',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1213,24 +1619,31 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [bi_amino_blend_2, arginine_100_2, citrulline_100_2],
   },
 
   {
     id: 41,
     name: 'Zofran (Ondansetron)',
-
     category: {
       id: 4,
       name: 'IM - Injectable',
     },
-
-    indications: '',
-    contraindications: '',
-    cautions: [],
+    indications:
+      'Patients that request the IV injection without contraindication. ',
+    contraindications: [
+      'Hypersensitivity/Allergic Reaction',
+      'Pregnancy before 11 weeks’ gestation',
+      'Prolonged QT Syndrome							',
+    ],
+    cautions: [
+      'Max Total Dose: Max total dosing includes all Slow IV Push (SIVP 10-20 seconds)',
+    ],
     description: '',
     focus: [],
-    frequency: null,
+    frequency: {
+      maximum: '1 day',
+    },
     source: 'Empower',
     infusion: {
       minimum: null,
@@ -1241,18 +1654,16 @@ const therapies = [
       amount: null,
       units: null,
     },
-    elements: [],
+    elements: [zofran_2_2],
   },
 
   {
     id: 42,
     name: 'Semaglutide/Cyanocobalamin',
-
     category: {
       id: 5,
       name: 'SC - Injectable',
     },
-
     indications: '',
     contraindications: '',
     cautions: [],

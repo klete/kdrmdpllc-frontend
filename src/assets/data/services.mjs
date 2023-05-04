@@ -33,7 +33,7 @@ const services = [
       },
       {
         id: 8,
-        name: '#I’ll never Drink Again',
+        name: '#I’ll Never Drink Again',
       },
       {
         id: 9,
