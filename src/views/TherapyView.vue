@@ -108,78 +108,81 @@
       </table>
     </section>
 
-    <section
-      v-if="selectedTherapy?.packages?.length > 0"
-      class="table-container"
-    >
-      <h3>
-        Elements
-      </h3>
-      <table class="elements">
-        <thead>
-          <th colspan="2"></th>
-          <th>Amount</th>
-          <th>Volume Infused</th>
-          <th>Amount Infused</th>
-        </thead>
-        <tbody v-for="_package in selectedTherapy.packages" :key="_package.id">
-          <Package v-if="_package.label" :package="_package" />
-          <Element v-else :element="_package" />
-        </tbody>
-      </table>
-    </section>
+    <section class="table-container">
+      <div v-if="selectedTherapy?.packages?.length > 0" class="table-container">
+        <h3>
+          Elements
+        </h3>
+        <table class="elements">
+          <thead>
+            <th colspan="2"></th>
+            <th>Amount</th>
+            <th>Volume Infused</th>
+            <th>Amount Infused</th>
+          </thead>
+          <tbody
+            v-for="_package in selectedTherapy.packages"
+            :key="_package.id"
+          >
+            <Package v-if="_package.label" :package="_package" />
+            <Element v-else :element="_package" />
+          </tbody>
+        </table>
+      </div>
 
-    <section class="table-container" v-if="selectedTherapy.substrate.name">
-      <table class="elements">
-        <thead>
-          <tr>
-            <th colspan="3">Substrate</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ selectedTherapy.substrate.name }}</td>
-            <td class="amount">
-              {{ selectedTherapy.substrate.amount }}
-            </td>
-            <td>{{ selectedTherapy.substrate.units }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <div class="table-container" v-if="selectedTherapy.substrate.name">
+        <table class="elements">
+          <thead>
+            <tr>
+              <th colspan="3">Substrate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ selectedTherapy.substrate.name }}</td>
+              <td class="amount">
+                {{ selectedTherapy.substrate.amount }}
+              </td>
+              <td>{{ selectedTherapy.substrate.units }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <section class="table-container" v-if="selectedTherapy.infusion?.minimum">
-      <table class="elements">
-        <thead>
-          <tr>
-            <th>Infusion rate</th>
+      <div v-if="selectedTherapy.infusion?.minimum" class="table-container">
+        <table class="elements">
+          <thead>
+            <tr>
+              <th>Infusion rate</th>
 
-            <th v-if="selectedTherapy.infusion?.initial">Initial</th>
-            <th v-if="selectedTherapy.infusion?.minimum">Minimum</th>
-            <th v-if="selectedTherapy.infusion?.maximum">Maximum</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td v-if="selectedTherapy.infusion?.initial">
-              {{ selectedTherapy.infusion?.initial }}
-            </td>
-            <td v-if="selectedTherapy.infusion?.minimum">
-              {{ selectedTherapy.infusion?.minimum }}
-            </td>
-            <td v-if="selectedTherapy.infusion?.maximum">
-              {{ selectedTherapy.infusion?.maximum }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <th v-if="selectedTherapy.infusion?.initial">Initial</th>
+              <th v-if="selectedTherapy.infusion?.minimum">Minimum</th>
+              <th v-if="selectedTherapy.infusion?.maximum">Maximum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td v-if="selectedTherapy.infusion?.initial">
+                {{ selectedTherapy.infusion?.initial }}
+              </td>
+              <td v-if="selectedTherapy.infusion?.minimum">
+                {{ selectedTherapy.infusion?.minimum }}
+              </td>
+              <td v-if="selectedTherapy.infusion?.maximum">
+                {{ selectedTherapy.infusion?.maximum }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </article>
 </template>
 
 <script setup>
 import Therapies from '@/assets/data/therapies.mjs'
+
 import Element from '../components/Element.vue'
 import FrequencyList from '../components/FrequencyList.vue'
 import Package from '../components/Package.vue'
@@ -215,7 +218,8 @@ html[color-scheme='light'] section.table-container {
   background-color: white;
 }
 
-section + section {
+section + section,
+div.table-container + div.table-container {
   margin-top: 3rem;
 }
 
