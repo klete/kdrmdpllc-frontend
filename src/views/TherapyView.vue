@@ -1,6 +1,12 @@
 <template>
   <article v-if="selectedTherapy">
-    <h2>{{ selectedTherapy.name }}</h2>
+    <nav>
+      <h2>{{ selectedTherapy.name }}</h2>
+      <div>
+        <button @click="goPrev">Prev</button>
+        <button @click="goNext">Next</button>
+      </div>
+    </nav>
 
     <section class="table-container">
       <h3>
@@ -24,7 +30,7 @@
               <ul>
                 <li
                   v-for="(c, i) in selectedTherapy.contraindications"
-                  :key="i"
+                  :key="`contraindications_${i}`"
                 >
                   {{ c }}
                 </li>
@@ -38,7 +44,7 @@
               <ul>
                 <li
                   v-for="(caution, index) in selectedTherapy.cautions"
-                  :key="index"
+                  :key="`cautions_${index}`"
                   class="caution"
                 >
                   <span v-html="caution"></span>
@@ -52,7 +58,7 @@
               <div
                 class="recommendation"
                 v-for="(item, index) in selectedTherapy.recommendations"
-                :key="index"
+                :key="`recommendations_${index}`"
               >
                 <span v-html="item"></span>
               </div>
@@ -66,7 +72,10 @@
             <td>Focus:</td>
             <td>
               <ul>
-                <li v-for="(item, index) in selectedTherapy.focus" :key="index">
+                <li
+                  v-for="(item, index) in selectedTherapy.focus"
+                  :key="`focus_${index}`"
+                >
                   {{ item }}
                 </li>
               </ul>
@@ -102,7 +111,10 @@
           <th>Volume Infused</th>
           <th>Amount Infused</th>
         </thead>
-        <tbody v-for="element in selectedTherapy.elements" :key="element.id">
+        <tbody
+          v-for="element in selectedTherapy.elements"
+          :key="`elements_${element.id}`"
+        >
           <Element :element="element" />
         </tbody>
       </table>
@@ -121,9 +133,12 @@
             <th>Amount Infused</th>
           </thead>
           <tbody
-            v-for="_package in selectedTherapy.packages"
-            :key="_package.id"
+            v-for="(_package, index) in selectedTherapy.packages"
+            :key="`packages_${index}`"
           >
+            <!-- <tr>
+              <td>* {{ _package.id }} *</td>
+            </tr> -->
             <Package v-if="_package.label" :package="_package" />
             <Element v-else :element="_package" />
           </tbody>
@@ -181,18 +196,67 @@
 </template>
 
 <script setup>
+import { ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
+
 import Therapies from '@/assets/data/therapies.mjs'
 
 import Element from '../components/Element.vue'
 import FrequencyList from '../components/FrequencyList.vue'
 import Package from '../components/Package.vue'
 
-const therapies = Therapies.therapies
-
+const router = useRouter()
 const props = defineProps(['id'])
+const therapies = Therapies.therapies
+const max_therapies = therapies.length
+const selectedTherapy = ref(null)
 
-const selectedId = +props.id
-const selectedTherapy = therapies.find((i) => i.id === selectedId)
+function findRequestedTherapy(idRequested) {
+  return therapies.find((i) => i.id == idRequested)
+}
+
+watchEffect(() => {
+  let selectedId = Number(props.id)
+  if (Number.isNaN(selectedId)) {
+    console.log('Invalid id: ' + props.id)
+    return
+  } else if (selectedId <= 0) {
+    selectedId = max_therapies
+    pushRoute(selectedId)
+  } else if (selectedId > max_therapies) {
+    selectedId = 1
+    pushRoute(selectedId)
+  }
+  selectedTherapy.value = findRequestedTherapy(selectedId)
+})
+
+function goPrev() {
+  const num = Number(props.id)
+
+  if (Number.isNaN(num)) {
+    console.log("goPrev didn't receive a valid number: " + props.id)
+  } else {
+    pushRoute(num - 1)
+  }
+}
+function goNext() {
+  const num = Number(props.id)
+
+  if (Number.isNaN(num)) {
+    console.log("goPrev didn't receive a valid number: " + props.id)
+  } else {
+    pushRoute(num + 1)
+  }
+}
+
+function pushRoute(id) {
+  router.push({
+    name: 'TherapyView',
+    params: {
+      id: id,
+    },
+  })
+}
 </script>
 
 <style scoped>
@@ -202,6 +266,27 @@ article {
   line-height: 1.5;
   width: 1200px;
   margin-inline: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav button {
+  margin: 0 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  background-color: hsl(192 19% 45% / 1);
+  color: white;
+  font-weight: 700;
+}
+
+html[color-scheme='light'] nav button {
+  /* background-color: hsl(57 39% 90% / 1); */
+  background-color: white;
+  color: hsl(276 100% 19%);
 }
 
 section.table-container {

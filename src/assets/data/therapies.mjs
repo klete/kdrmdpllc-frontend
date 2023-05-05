@@ -1538,8 +1538,9 @@ const therapies = [
     indications:
       'Patients that request the NAD+ Rejuvenate without contraindication.',
     contraindications: 'Pregnancy and Breastfeeding',
-    recommendations:
+    recommendations: [
       'Frequency: Clinical recommended loading dose for NAD IM is to administer 100 mg once daily for 5 days in a row. After this series is completed, it is recommended that patients receive ongoing injections once weekly to maintain NAD levels in your system',
+    ],
     cautions: [
       'Anxiety/Panic Attacks',
       'Max Total Dose: Max total dosing includes all IV administration',
