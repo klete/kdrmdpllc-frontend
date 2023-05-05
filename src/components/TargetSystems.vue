@@ -1,9 +1,9 @@
 <template>
-  <div class="table-container">
+  <section class="table-container">
+    <h3>
+      Target Systems
+    </h3>
     <table>
-      <caption>
-        Target Systems
-      </caption>
       <thead>
         <tr>
           <th v-for="system in target_systems" :key="system.id">
@@ -19,7 +19,7 @@
         />
       </tbody>
     </table>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -33,19 +33,24 @@ const target_systems = TargetSystems.target_systems
 </script>
 
 <style scoped>
-article {
-  font-size: 1.35rem;
-  font-family: system-ui;
-  line-height: 1.5;
-  /* width: min(1200px, 100% - 3rem); */
-  width: 1200px;
-  margin-inline: auto;
-}
-
-.table-container {
-  margin: 1rem 2rem;
+section.table-container {
+  margin: 2rem 2rem;
+  padding: 0rem 1rem 1rem;
   max-width: 100%;
   overflow-x: auto;
+  background-color: hsl(192 19% 45% / 1);
+}
+
+h3 {
+  background: hsl(276 100% 19%);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1rem;
+  text-align: left;
+  margin: 1rem 0 2rem 0;
+  color: white;
+  font-weight: 600;
 }
 
 table {
@@ -55,15 +60,6 @@ table {
 
 table + table {
   margin-top: 3rem;
-}
-
-caption {
-  background: hsl(276 100% 19%);
-  font-size: 1.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 1rem;
-  text-align: left;
 }
 
 th,
@@ -81,14 +77,15 @@ td a {
   color: white;
 }
 
-html[color-scheme='light'] caption {
-  color: white;
-}
-
 html[color-scheme='light'] th,
 html[color-scheme='light'] td,
 html[color-scheme='light'] th a,
 html[color-scheme='light'] td a {
   color: hsl(276 100% 19%);
+}
+
+html[color-scheme='light'] section.table-container {
+  /* background-color: hsl(57 39% 90% / 1); */
+  background-color: white;
 }
 </style>

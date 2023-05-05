@@ -27,19 +27,9 @@
 </template>
 
 <script setup>
+import { formatNumber } from '../utilities/index.mjs'
+
 const props = defineProps(['package'])
-
-function formatNumber(num) {
-  if (typeof num == 'string') {
-    num = Number(num)
-    if (Number.isNaN(num)) return null
-  }
-  if (typeof num == 'number') {
-    return num.toLocaleString()
-  }
-
-  return null
-}
 </script>
 
 <style scoped>

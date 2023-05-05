@@ -1,34 +1,36 @@
 <template>
-  <div class="table-container">
+  <section class="table-container">
+    <h3>
+      Guideline Index
+    </h3>
     <table>
-      <caption>
-        Guideline Index
-      </caption>
-
-      <tr>
-        <th v-for="service in services" :key="service.id">
-          <router-link
-            :to="{ name: 'ServiceView', params: { id: service.id } }"
-          >
-            {{ service.name }}
-          </router-link>
-        </th>
-      </tr>
-
-      <tr v-for="i in numRowsServices">
-        <td v-for="j in services.length">
-          <router-link
-            :to="{
-              name: 'TherapyView',
-              params: { id: `${services[j - 1]?.therapies[i - 1]?.id}` },
-            }"
-          >
-            {{ services[j - 1]?.therapies[i - 1]?.name }}
-          </router-link>
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th v-for="service in services" :key="service.id">
+            <router-link
+              :to="{ name: 'ServiceView', params: { id: service.id } }"
+            >
+              {{ service.name }}
+            </router-link>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="i in numRowsServices">
+          <td v-for="j in services.length">
+            <router-link
+              :to="{
+                name: 'TherapyView',
+                params: { id: `${services[j - 1]?.therapies[i - 1]?.id}` },
+              }"
+            >
+              {{ services[j - 1]?.therapies[i - 1]?.name }}
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
     </table>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -40,19 +42,24 @@ const numRowsServices = 18
 </script>
 
 <style scoped>
-article {
-  font-size: 1.35rem;
-  font-family: system-ui;
-  line-height: 1.5;
-  /* width: min(1200px, 100% - 3rem); */
-  width: 1200px;
-  margin-inline: auto;
-}
-
-.table-container {
-  margin: 1rem 2rem;
+section.table-container {
+  margin: 2rem 2rem;
+  padding: 0rem 1rem 1rem;
   max-width: 100%;
   overflow-x: auto;
+  background-color: hsl(192 19% 45% / 1);
+}
+
+h3 {
+  background: hsl(276 100% 19%);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1rem;
+  text-align: left;
+  margin: 1rem 0 2rem 0;
+  color: white;
+  font-weight: 600;
 }
 
 table {
@@ -62,15 +69,6 @@ table {
 
 table + table {
   margin-top: 3rem;
-}
-
-caption {
-  background: hsl(276 100% 19%);
-  font-size: 1.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 1rem;
-  text-align: left;
 }
 
 th,
@@ -88,12 +86,13 @@ td a {
   color: white;
 }
 
-html[color-scheme='light'] caption {
-  color: white;
-}
-
 html[color-scheme='light'] th a,
 html[color-scheme='light'] td a {
   color: hsl(276 100% 19%);
+}
+
+html[color-scheme='light'] section.table-container {
+  /* background-color: hsl(57 39% 90% / 1); */
+  background-color: white;
 }
 </style>

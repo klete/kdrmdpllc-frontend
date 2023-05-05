@@ -197,7 +197,6 @@ article {
   font-size: 1.35rem;
   font-family: system-ui;
   line-height: 1.5;
-
   width: 1200px;
   margin-inline: auto;
 }
@@ -209,6 +208,11 @@ section.table-container {
   overflow-x: auto;
   /* border: 1px solid white; */
   background-color: hsl(192 19% 45% / 1);
+}
+
+html[color-scheme='light'] section.table-container {
+  /* background-color: hsl(57 39% 90% / 1); */
+  background-color: white;
 }
 
 section + section {
