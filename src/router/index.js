@@ -7,6 +7,9 @@ import Login from '@/views/LogIn.vue'
 import Dashboard from '@/views/Dashboard.vue'
 import ServiceView from '@/views/ServiceView.vue'
 import TherapyView from '@/views/TherapyView.vue'
+import GuidelineIndexView from '@/views/GuidelineIndexView.vue'
+import TargetSystemsView from '@/views/TargetSystemsView.vue'
+import ElementsIndexView from '@/views/ElementsIndexView.vue'
 
 import FlashMessageService from '@/services/FlashMessageService'
 import firebaseApp from '../firebase/config.js'
@@ -43,7 +46,28 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
-    path: '/dashboard/:id',
+    path: '/guidelines',
+    name: 'GuidelineIndexView',
+    component: GuidelineIndexView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/targetsystems',
+    name: 'TargetSystemsView',
+    component: TargetSystemsView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/elements',
+    name: 'ElementsIndexView',
+    component: ElementsIndexView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/service/:id',
     name: 'ServiceView',
     component: ServiceView,
     meta: { requiresAuth: true },

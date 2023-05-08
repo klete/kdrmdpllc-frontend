@@ -1,25 +1,39 @@
 <template>
   <article>
-    <h2>
-      Master Therapy Guide
-    </h2>
-
-    <GuidelineIndex />
-    <p class="spacer"></p>
-    <TargetSystems />
+    <ul>
+      <li>
+        <router-link :to="{ name: 'GuidelineIndexView' }">
+          Guideline Index
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'TargetSystemsView' }">
+          Target Systems
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'ElementsIndexView' }">
+          Elements
+        </router-link>
+      </li>
+    </ul>
   </article>
 </template>
 
-<script setup>
-import GuidelineIndex from '../components/GuidelineIndex.vue'
-import TargetSystems from '../components/TargetSystems.vue'
-</script>
+<script setup></script>
 
 <style scoped>
-h2 {
-  margin: 1rem 2rem 1.5rem 2.5rem;
+ul {
+  list-style-type: none;
 }
-p.spacer {
-  height: 3rem;
+li {
+  padding: 0.5rem 1rem;
+}
+li a {
+  color: white;
+}
+
+li a:hover {
+  text-decoration: underline;
 }
 </style>

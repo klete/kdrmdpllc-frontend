@@ -91,6 +91,21 @@
             <td>Source:</td>
             <td>{{ selectedTherapy.source }}</td>
           </tr>
+          <tr>
+            <td>Resources:</td>
+            <td>
+              <ul>
+                <li
+                  v-for="(resource, index) in selectedTherapy.resources"
+                  :key="`resource_${index}`"
+                >
+                  <a :href="resource.link" target="_blank">
+                    {{ resource.name }} ({{ resource.source }})
+                  </a>
+                </li>
+              </ul>
+            </td>
+          </tr>
         </tbody>
       </table>
     </section>
@@ -281,12 +296,18 @@ nav button {
   background-color: hsl(192 19% 45% / 1);
   color: white;
   font-weight: 700;
+  border: none;
 }
 
 html[color-scheme='light'] nav button {
   /* background-color: hsl(57 39% 90% / 1); */
   background-color: white;
   color: hsl(276 100% 19%);
+  border: 1px solid hsl(276 100% 19%);
+}
+
+nav button:hover {
+  cursor: pointer;
 }
 
 section.table-container {
@@ -372,5 +393,13 @@ html[color-scheme='light'] th,
 html[color-scheme='light'] td {
   color: hsl(276 100% 19%);
   font-weight: 600;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 </style>

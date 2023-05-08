@@ -7,7 +7,7 @@
   </tr>
   <tr v-for="(element, index) in package.elements" :key="index">
     <td></td>
-    <td class="element">&ndash; {{ element.name }}</td>
+    <td class="package-name">&ndash; {{ element.name }}</td>
     <td class="amount">
       {{ formatNumber(element.amount) }} {{ element.elemental_units_per }}
       <span v-if="element.amount">/</span>
@@ -51,10 +51,14 @@ td.amount {
 td.name {
   text-transform: capitalize;
 }
-/* td {
-  border: 1px solid white;
-} */
-td.element {
+
+td.package-name {
   text-align: right;
+}
+
+html[color-scheme='light'] th,
+html[color-scheme='light'] td {
+  color: hsl(276 100% 19%);
+  font-weight: 600;
 }
 </style>

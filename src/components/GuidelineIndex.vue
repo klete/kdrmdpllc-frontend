@@ -47,7 +47,8 @@ section.table-container {
   padding: 0rem 1rem 1rem;
   max-width: 100%;
   overflow-x: auto;
-  background-color: hsl(192 19% 45% / 1);
+  /* background-color: hsl(192 19% 45% / 1); */
+  background-color: hsl(276 100% 19% / 0.2);
 }
 
 h3 {
@@ -78,7 +79,7 @@ td {
 
 th {
   text-align: left;
-  background: hsl(276 100% 19% / 0.2);
+  background: hsl(207 24% 43% / 1);
 }
 
 th a,
@@ -86,13 +87,22 @@ td a {
   color: white;
 }
 
-html[color-scheme='light'] th a,
-html[color-scheme='light'] td a {
-  color: hsl(276 100% 19%);
+th a:hover,
+td a:hover {
+  text-decoration: underline;
 }
 
 html[color-scheme='light'] section.table-container {
   /* background-color: hsl(57 39% 90% / 1); */
   background-color: white;
+}
+
+html[color-scheme='light'] th {
+  background-color: hsl(276 100% 19% / 0.2);
+}
+
+html[color-scheme='light'] th a,
+html[color-scheme='light'] td a {
+  color: hsl(276 100% 19%);
 }
 </style>

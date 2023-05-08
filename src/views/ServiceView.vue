@@ -18,8 +18,6 @@ const props = defineProps(['id'])
 
 const selectedId = +props.id
 const selectedService = services.find((i) => i.id === selectedId)
-
-console.log(selectedService)
 </script>
 
 <style scoped>

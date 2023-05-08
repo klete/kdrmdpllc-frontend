@@ -6,7 +6,6 @@ import {
   vitamin_b_5_2_1,
   vitamin_b_6_2_1,
   vitamin_b_12_2_1,
-  basic_b_vitamin_set,
   magnesium_chloride_300_0__5,
   magnesium_chloride_300_1,
   magnesium_chloride_300_4,
@@ -31,20 +30,10 @@ import {
   glutathione_200_1,
   glutathione_200_5,
   glutathione_200_10,
-  copper_0__3_0__5,
-  selenium_60_0__5,
-  zinc_3_0__5,
-  manganese_55_0__5,
-  arginine_100_5,
-  citrulline_100_5,
   arginine_100_1,
   citrulline_100_1,
   arginine_100_2,
   citrulline_100_2,
-  zinc_3_1,
-  manganese_55_1,
-  copper_0__3_1,
-  selenium_60_1,
   lysine_100_2__5,
   l_taurine_50_1,
   l_taurine_50_5,
@@ -98,13 +87,6 @@ const therapies = [
       maximum: '45 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   calcium_gluconate_100_5,
-    //   magnesium_chloride_300_4,
-    //   'Vitamin B Complex',
-    //   ...basic_b_vitamin_set,
-    //   vitamin_b_12_2_1,
-    // ],
     packages: [
       calcium_gluconate_100_5,
       magnesium_chloride_300_4,
@@ -136,22 +118,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   vitamin_c_100_5,
-    //   'Vitamin B Complex',
-    //   ...basic_b_vitamin_set,
-    //   'Bi-Amino Blend',
-    //   arginine_100_5,
-    //   citrulline_100_5,
-    //   '',
-    //   glycine_50_10,
-    //   lysine_100_2__5,
-    //   'Tralement Blend',
-    //   zinc_3_0__5,
-    //   manganese_55_0__5,
-    //   copper_0__3_0__5,
-    //   selenium_60_0__5,
-    // ],
+
     packages: [
       vitamin_c_100_5,
       vitamin_b_complex,
@@ -246,7 +213,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [hydroxocobalamin_2_1, l_taurine_50_5, alpha_lipoic_acid_25_5],
+
     packages: [
       hydroxocobalamin_2_1,
       l_taurine_50_5,
@@ -277,14 +244,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   ...basic_b_vitamin_set,
-    //   arginine_100_5,
-    //   citrulline_100_5,
-    //   glycine_50_10,
-    //   lysine_100_2__5,
-    //   l_taurine_50_5,
-    // ],
+
     packages: [
       vitamin_b_complex,
       bi_amino_blend,
@@ -350,15 +310,6 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   ...basic_b_vitamin_set,
-    //   zinc_3_1,
-    //   manganese_55_1,
-    //   copper_0__3_1,
-    //   selenium_60_1,
-    //   l_taurine_50_5,
-    //   magnesium_chloride_300_2,
-    // ],
     packages: [
       vitamin_b_complex,
       tralement_blend,
@@ -390,7 +341,7 @@ const therapies = [
       maximum: '45 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [vitamin_c_500_25, ...basic_b_vitamin_set, zinc_sulfate_10_1],
+
     packages: [vitamin_c_500_25, vitamin_b_complex, zinc_sulfate_10_1],
   },
 
@@ -425,13 +376,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   ...basic_b_vitamin_set,
-    //   magnesium_chloride_300_0__5,
-    //   hydroxocobalamin_2_0__5,
-    //   calcium_gluconate_100_1,
-    //   vitamin_c_500_1,
-    // ],
+
     packages: [
       vitamin_b_complex,
       magnesium_chloride_300_0__5,
@@ -440,7 +385,12 @@ const therapies = [
       vitamin_c_500_1,
     ],
     resources: [
-      'https://wellnesspharmacy.com/wp-content/uploads/2015/01/myers_cocktail.pdf',
+      {
+        name: 'Intravenous Nutrient Therapy: the “Myers’ Cocktail”',
+        source: 'wellnesspharmacy.com',
+        link:
+          'https://wellnesspharmacy.com/wp-content/uploads/2015/01/myers_cocktail.pdf',
+      },
     ],
   },
 
@@ -473,15 +423,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   ...basic_b_vitamin_set,
-    //   magnesium_chloride_300_0__5,
-    //   hydroxocobalamin_2_0__5,
-    //   calcium_gluconate_100_1,
-    //   vitamin_c_500_1,
-    //   zinc_sulfate_10_1,
-    //   l_taurine_50_5,
-    // ],
+
     packages: [
       vitamin_b_complex,
       magnesium_chloride_300_0__5,
@@ -600,23 +542,6 @@ const therapies = [
       maximum: null,
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   ['', vitamin_c_500_1],
-    //   'Vitamin B Complex',
-    //   ['', vitamin_b_1_100_1],
-    //   ['', vitamin_b_3_100_1],
-    //   ['', vitamin_b_2_2_1],
-    //   ['', vitamin_b_5_2_1],
-    //   ['', vitamin_b_6_2_1],
-    //   ['', zinc_sulfate_10_1],
-    //   ['', hydroxocobalamin_2_1],
-    //   ['', l_taurine_50_1],
-    //   ['', magnesium_chloride_300_1],
-    //   ['', arginine_100_1],
-    //   ['', citrulline_100_1],
-    //   ['', calcium_gluconate_100_1],
-    //   ['SIVP', glutathione_200_1],
-    // ],
     packages: [
       vitamin_c_500_1,
       vitamin_b_complex,
@@ -649,7 +574,7 @@ const therapies = [
       maximum: null,
     },
     substrate: substrate_ringers,
-    // elements: [...basic_b_vitamin_set],
+
     packages: [
       vitamin_c_500_5,
       vitamin_b_complex,
@@ -771,15 +696,7 @@ const therapies = [
       maximum: '30 minutes',
     },
     substrate: substrate_ringers,
-    // elements: [
-    //   vitamin_c_500_1,
-    //   ...basic_b_vitamin_set,
-    //   zinc_sulfate_10_1,
-    //   hydroxocobalamin_2_1,
-    //   l_taurine_50_1,
-    //   magnesium_chloride_300_4,
-    //   glycine_50_5,
-    // ],
+
     packages: [
       vitamin_c_500_1,
       vitamin_b_complex,
@@ -827,10 +744,30 @@ const therapies = [
       ['Double Boost', vitamin_c_500_20],
     ],
     resources: [
-      'pubmed.ncbi.nlm.nih.gov/29567393/',
-      'www.sciencedirect.com/topics/medicine-and-dentistry/ascorbic-acid-metabolism',
-      'pubchem.ncbi.nlm.nih.gov/compound/ascorbic-acid#section=DSSTox-Substance-ID',
-      'pubchem.ncbi.nlm.nih.gov/source/hsdb/818#section=Metabolism-Pharmacokinetics',
+      {
+        name:
+          'Ascorbic acid metabolism and functions: A comparison of plants and mammals',
+        source: 'PubMed',
+        link: 'https://pubmed.ncbi.nlm.nih.gov/29567393/',
+      },
+      {
+        name: 'Ascorbic Acid Metabolism',
+        source: 'sciencedirect.com',
+        link:
+          'https://www.sciencedirect.com/topics/medicine-and-dentistry/ascorbic-acid-metabolism',
+      },
+      {
+        name: 'Ascorbic Acid (Compound)',
+        source: 'PubChem',
+        link:
+          'https://pubchem.ncbi.nlm.nih.gov/compound/ascorbic-acid#section=DSSTox-Substance-ID',
+      },
+      {
+        name: 'L-Ascorbic Acid (Annotation): Metabolism/ Pharmacokinetics',
+        source: 'PubChem',
+        link:
+          'https://pubchem.ncbi.nlm.nih.gov/source/hsdb/818#section=Metabolism-Pharmacokinetics',
+      },
     ],
   },
 
@@ -1113,10 +1050,28 @@ const therapies = [
     },
     packages: [alpha_lipoic_acid_25_5],
     resources: [
-      'www.mskcc.org/cancer-care/integrative-medicine/herbs/alpha-lipoic-acid',
-      'www.mountsinai.org/health-library/supplement/alpha-lipoic-acid',
-      'www.ncbi.nlm.nih.gov/books/NBK564301/',
-      'lpi.oregonstate.edu/mic/dietary-factors/lipoic-acid',
+      {
+        name: 'Alpha-Lipoic Acid',
+        source: 'Memorial Sloan Kettering Cancer Center',
+        link:
+          'https://www.mskcc.org/cancer-care/integrative-medicine/herbs/alpha-lipoic-acid',
+      },
+      {
+        name: 'Alpha-lipoic acid',
+        source: 'Mount Sinai',
+        link:
+          'https://www.mountsinai.org/health-library/supplement/alpha-lipoic-acid',
+      },
+      {
+        name: 'Alpha-Lipoic Aci',
+        source: 'National Library of Medicine',
+        link: 'https://www.ncbi.nlm.nih.gov/books/NBK564301/',
+      },
+      {
+        name: 'Lipoic Acid',
+        source: 'Linus Pauling Institute',
+        link: 'https://lpi.oregonstate.edu/mic/dietary-factors/lipoic-acid',
+      },
     ],
   },
 
@@ -1154,8 +1109,17 @@ const therapies = [
       ['Double Boost: SIVP', glutathione_200_5],
     ],
     resources: [
-      'pubchem.ncbi.nlm.nih.gov/compound/124886',
-      'medlineplus.gov/genetics/condition/glutathione-synthetase-deficiency/',
+      {
+        name: 'Glutathione',
+        source: 'PubChem',
+        link: 'https://pubchem.ncbi.nlm.nih.gov/compound/124886',
+      },
+      {
+        name: 'Glutathione synthetase deficiency (MedlinePllus)',
+        source: 'MedlinePllus',
+        link:
+          'https://medlineplus.gov/genetics/condition/glutathione-synthetase-deficiency/',
+      },
     ],
   },
   {

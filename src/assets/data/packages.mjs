@@ -18,30 +18,6 @@ import {
   cyanocobalamin_50_1,
 } from './therapy_elements.mjs'
 
-// const calcium_gluconate_100_5 = {
-//   id: 9,
-//   name: 'calcium gluconate',
-//   amount: 100,
-//   elemental_units_per: 'mg',
-//   volume_units: 'mL',
-//   volume_infused: 5,
-//   volume_infused_units: 'mL',
-//   amount_element_infused: 500,
-//   element_infused_units: 'mg',
-// }
-
-// const magnesium_chloride_300_4 = {
-//   id: 10,
-//   name: 'magnesium chloride',
-//   amount: 300,
-//   elemental_units_per: 'mg',
-//   volume_units: 'mL',
-//   volume_infused: 4,
-//   volume_infused_units: 'mL',
-//   amount_element_infused: 1200,
-//   element_infused_units: 'mg',
-// }
-
 const vitamin_b_complex = {
   id: 'package: vitamin_b_complex',
   label: 'Vitamin B Complex',
@@ -89,4 +65,19 @@ const lipo_b = {
   elements: [methionine_15_1, choline_50_1, cyanocobalamin_50_1],
 }
 
-export { vitamin_b_complex, bi_amino_blend, tralement_blend, lipo_c, lipo_b }
+const packages = [
+  vitamin_b_complex,
+  bi_amino_blend,
+  tralement_blend,
+  lipo_c,
+  lipo_b,
+]
+
+export {
+  packages,
+  vitamin_b_complex,
+  bi_amino_blend,
+  tralement_blend,
+  lipo_c,
+  lipo_b,
+}

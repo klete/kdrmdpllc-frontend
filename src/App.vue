@@ -7,6 +7,9 @@
   />
 
   <main>
+    <h2>
+      Master Therapy Guide
+    </h2>
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" @login-requested="handleLoginRequest" />
@@ -82,6 +85,11 @@ const showModal = computed(() => {
 })
 </script>
 
+<style scoped>
+h2 {
+  margin: 1rem 2rem 1.5rem 2.5rem;
+}
+</style>
 <style>
 /* fade */
 

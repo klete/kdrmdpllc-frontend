@@ -52,7 +52,13 @@ for (let j = 0; j < num_systems; j++) {
 
 <style scoped>
 td.service {
-  background-color: hsl(192 19% 45% / 1);
+  /* background-color: hsl(192 19% 45% / 1); */
+  /* background: hsl(276 100% 19% / 0.2); */
+  background: hsl(207 24% 43% / 1);
+}
+
+html[color-scheme='light'] td.service {
+  background: hsl(276 100% 19% / 0.2);
 }
 
 th,
@@ -64,9 +70,9 @@ th a,
 td a {
   color: white;
 }
-
-html[color-scheme='light'] td.service {
-  color: white;
+th a:hover,
+td a:hover {
+  text-decoration: underline;
 }
 
 html[color-scheme='light'] th,
