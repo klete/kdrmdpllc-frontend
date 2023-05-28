@@ -16,22 +16,32 @@ import { VueFire } from 'vuefire'
 import firebaseApp from '@/firebase/config.js'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
-const auth = getAuth(firebaseApp)
+// const auth = getAuth(firebaseApp)
 
 let app
 
 console.log(import.meta.env)
 
-onAuthStateChanged(auth, () => {
-  if (!app) {
-    app = createApp(App)
-    app.use(router)
-    app.use(VueFire, {
-      firebaseApp,
-      modules: [],
-    })
-    app.component('modal', Modal)
-    app.provide('GStore', GStore)
-    app.mount('#app')
-  }
+app = createApp(App)
+app.use(router)
+app.use(VueFire, {
+  firebaseApp,
+  modules: [],
 })
+app.component('modal', Modal)
+app.provide('GStore', GStore)
+app.mount('#app')
+
+// onAuthStateChanged(auth, () => {
+//   if (!app) {
+//     app = createApp(App)
+//     app.use(router)
+//     app.use(VueFire, {
+//       firebaseApp,
+//       modules: [],
+//     })
+//     app.component('modal', Modal)
+//     app.provide('GStore', GStore)
+//     app.mount('#app')
+//   }
+// })
