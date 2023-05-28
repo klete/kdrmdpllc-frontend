@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 
+console.log(import.meta.env)
+
 import App from './App.vue'
 import router from './router'
 import { GStore } from './store'
@@ -19,8 +21,6 @@ import './assets/css/print.css'
 // const auth = getAuth(firebaseApp)
 
 let app
-
-console.log(import.meta.env)
 
 app = createApp(App)
 app.use(router)
