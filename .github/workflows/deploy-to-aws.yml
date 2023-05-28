@@ -8,12 +8,12 @@ jobs:
   deploy:
     environment: PROD
     env:
-      VITE_FIREBASE_API_KEY: 'AIzaSyCOkaCEV9DV7t_FofZmTlEdifYUROzXxcg'
-      VITE_FIREBASE_AUTH_DOMAIN: 'rptm-2923a.firebaseapp.com'
-      VITE_FIREBASE_PROJECT_ID: 'rptm-2923a'
-      VITE_FIREBASE_STORAGE_BUCKET: 'rptm-2923a.appspot.com'
-      VITE_FIREBASE_MESSAGING_SENDER_ID: '101564066493'
-      VITE_FIREBASE_APP_ID: '1:101564066493:web:a919600ec3892f2012a5d4'
+      VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+      VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+      VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+      VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+      VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+      VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
     name: Deploy to Amazon S3
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint.
