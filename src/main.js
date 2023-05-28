@@ -20,6 +20,8 @@ const auth = getAuth(firebaseApp)
 
 let app
 
+console.log(import.meta.env)
+
 onAuthStateChanged(auth, () => {
   if (!app) {
     app = createApp(App)
