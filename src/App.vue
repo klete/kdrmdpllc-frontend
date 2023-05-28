@@ -1,33 +1,33 @@
 <template>
-  <!-- <NavBar
+  <NavBar
     :menuIsActive="menuIsActive"
     @update:menu-status="updateMenuStatus"
     @login-requested="handleLoginRequest"
     @signup-requested="handleSignupRequest"
-  /> -->
+  />
 
   <main>
     <h2>
       Master Therapy Guide
     </h2>
-    <!-- <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" @login-requested="handleLoginRequest" />
       </transition>
-    </router-view> -->
+    </router-view>
   </main>
 
   <footer></footer>
 
-  <!-- <FlashMessage v-if="FlashMessageService.hasMessage()" />
+  <FlashMessage v-if="FlashMessageService.hasMessage()" />
 
   <modal v-if="showModal" :isActive="isActive" @close="handleCloseModal">
     <Login v-if="showLoginModal" @close="handleCloseModal" />
     <SignUp v-if="showSignUpModal" @close="handleCloseModal" />
-  </modal> -->
+  </modal>
 </template>
 
-<!-- <script setup>
+<script setup>
 import FlashMessage from './components/FlashMessage.vue'
 import NavBar from './components/NavBar.vue'
 import Login from './components/Login.vue'
@@ -83,7 +83,7 @@ function closeModal() {
 const showModal = computed(() => {
   return showLoginModal.value || showSignUpModal.value
 })
-</script> -->
+</script>
 
 <style scoped>
 h2 {
