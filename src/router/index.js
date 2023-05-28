@@ -16,8 +16,8 @@ import TargetSystemsView from '@/views/TargetSystemsView.vue'
 import ElementsIndexView from '@/views/ElementsIndexView.vue'
 
 import FlashMessageService from '@/services/FlashMessageService'
-import firebaseApp from '../firebase/config.js'
-import { getAuth } from 'firebase/auth'
+// import firebaseApp from '../firebase/config.js'
+// import { getAuth } from 'firebase/auth'
 
 const requireAuth = (to) => {
   const auth = getAuth(firebaseApp)
@@ -47,49 +47,49 @@ const routes = [
     name: 'Dashboard',
     component: Dashboard,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
   },
   {
     path: '/guidelines',
     name: 'GuidelineIndexView',
     component: GuidelineIndexView,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
   },
   {
     path: '/targetsystems',
     name: 'TargetSystemsView',
     component: TargetSystemsView,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
   },
   {
     path: '/elements',
     name: 'ElementsIndexView',
     component: ElementsIndexView,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
   },
   {
     path: '/services',
     name: 'ServicesView',
     component: ServicesView,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
   },
   {
     path: '/services/add',
     name: 'AddService',
     component: AddService,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
   },
   {
     path: '/service/:id',
     name: 'ServiceView',
     component: ServiceView,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
     props: true,
   },
   {
@@ -97,7 +97,7 @@ const routes = [
     name: 'EditService',
     component: EditService,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
     props: true,
   },
   {
@@ -105,7 +105,7 @@ const routes = [
     name: 'DeleteService',
     component: DeleteService,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
     props: true,
   },
   {
@@ -113,7 +113,7 @@ const routes = [
     name: 'TherapyView',
     component: TherapyView,
     meta: { requiresAuth: true },
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
     props: true,
   },
   {
