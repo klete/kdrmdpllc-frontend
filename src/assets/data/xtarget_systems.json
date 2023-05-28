@@ -1,0 +1,212 @@
+{
+  "target_systems": {
+    "general_wellness": {
+      "id": 1,
+      "name": "General Wellness",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [1, 4, 6, 8, 10, 11, 12, 14, 17]
+        },
+        {
+          "id": 2,
+          "therapies": [20, 22, 23, 24, 25, 26]
+        },
+        {
+          "id": 3,
+          "therapies": [27]
+        },
+        {
+          "id": 4,
+          "therapies": [31, 36, 37, 39, 40]
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "cognitive": {
+      "id": 2,
+      "name": "Cognitive",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [5, 18]
+        },
+        {
+          "id": 2,
+          "therapies": [25]
+        },
+        {
+          "id": 3,
+          "therapies": []
+        },
+        {
+          "id": 4,
+          "therapies": [40]
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "antioxidant": {
+      "id": 3,
+      "name": "Antioxidant",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [7, 9, 13, 14, 16, 17, 18]
+        },
+        {
+          "id": 2,
+          "therapies": [19, 23]
+        },
+        {
+          "id": 3,
+          "therapies": [28]
+        },
+        {
+          "id": 4,
+          "therapies": [33, 35]
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "pain_relief": {
+      "id": 4,
+      "name": "Pain Relief",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [1]
+        },
+        {
+          "id": 2,
+          "therapies": []
+        },
+        {
+          "id": 3,
+          "therapies": [27, 29]
+        },
+        {
+          "id": 4,
+          "therapies": [38]
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "athletic_performance": {
+      "id": 5,
+      "name": "Athletic Performance",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [2, 6, 13]
+        },
+        {
+          "id": 2,
+          "therapies": [20, 25]
+        },
+        {
+          "id": 3,
+          "therapies": []
+        },
+        {
+          "id": 4,
+          "therapies": [31, 40]
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "cosmetic": {
+      "id": 6,
+      "name": "Cosmetic",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [3]
+        },
+        {
+          "id": 2,
+          "therapies": [21]
+        },
+        {
+          "id": 3,
+          "therapies": [28]
+        },
+        {
+          "id": 4,
+          "therapies": [32, 35]
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "immunity": {
+      "id": 7,
+      "name": "Immunity",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [7, 9, 17]
+        },
+        {
+          "id": 2,
+          "therapies": [19, 23, 26]
+        },
+        {
+          "id": 3,
+          "therapies": []
+        },
+        {
+          "id": 4,
+          "therapies": []
+        },
+        {
+          "id": 5,
+          "therapies": []
+        }
+      ]
+    },
+    "weight_loss": {
+      "id": 8,
+      "name": "Weight Loss",
+      "services": [
+        {
+          "id": 1,
+          "therapies": [15, 16]
+        },
+        {
+          "id": 2,
+          "therapies": [20, 21, 26]
+        },
+        {
+          "id": 3,
+          "therapies": [27]
+        },
+        {
+          "id": 4,
+          "therapies": [31, 36, 37]
+        },
+        {
+          "id": 5,
+          "therapies": [41]
+        }
+      ]
+    }
+  }
+}

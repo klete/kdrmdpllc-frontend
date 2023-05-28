@@ -110,31 +110,6 @@
       </table>
     </section>
 
-    <section
-      v-if="selectedTherapy?.elements?.length > 0"
-      class="table-container"
-    >
-      <h3>
-        Elements
-      </h3>
-
-      <table class="elements">
-        <thead>
-          <th></th>
-          <th></th>
-          <th>Amount</th>
-          <th>Volume Infused</th>
-          <th>Amount Infused</th>
-        </thead>
-        <tbody
-          v-for="element in selectedTherapy.elements"
-          :key="`elements_${element.id}`"
-        >
-          <Element :element="element" />
-        </tbody>
-      </table>
-    </section>
-
     <section class="table-container">
       <div v-if="selectedTherapy?.packages?.length > 0" class="table-container">
         <h3>
@@ -160,7 +135,7 @@
         </table>
       </div>
 
-      <div class="table-container" v-if="selectedTherapy.substrate.name">
+      <div class="table-container" v-if="hasSubstrate">
         <table class="elements">
           <thead>
             <tr>
@@ -211,45 +186,134 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { isObject } from '@/utilities'
 
-import Therapies from '@/assets/data/therapies.mjs'
+// data imports
+
+import { therapies } from '@/assets/data/therapies.json'
+import { substrates } from '@/assets/data/therapy_elements.json'
+import { doses } from '@/assets/data/doses.json'
+
+// component imports
 
 import Element from '../components/Element.vue'
 import FrequencyList from '../components/FrequencyList.vue'
 import Package from '../components/Package.vue'
+import { MAX_VALUE_MILLIS } from '@firebase/util'
+
+// initializations
 
 const router = useRouter()
 const props = defineProps(['id'])
-const therapies = Therapies.therapies
-const max_therapies = therapies.length
 const selectedTherapy = ref(null)
 
-function findRequestedTherapy(idRequested) {
-  return therapies.find((i) => i.id == idRequested)
-}
+// "max_therapies": used for navigation code.  When cycling between therapies, I need to know when to reset to the beginning.
+
+const therapy_keys = Object.keys(therapies)
+
+const max_therapies = therapy_keys.length
 
 watchEffect(() => {
   let selectedId = Number(props.id)
+
+  // Check to see that I have received a valid therapy id.
+  // Handle error cases appropriately.
   if (Number.isNaN(selectedId)) {
-    console.log('Invalid id: ' + props.id)
-    return
+    // Couldn't convert to a number
+    let _message = `Invalid id: ${props.id}`
+    console.log(_message)
+    throw new Error(_message)
   } else if (selectedId <= 0) {
+    // Id is too small
     selectedId = max_therapies
     pushRoute(selectedId)
   } else if (selectedId > max_therapies) {
+    // Id is too big
     selectedId = 1
     pushRoute(selectedId)
   }
-  selectedTherapy.value = findRequestedTherapy(selectedId)
+
+  // Get the requested therapy data object
+  let _therapy = findRequestedTherapy(selectedId)
+
+  // Hydrate the object
+  hydrateSubstrate(_therapy.substrate)
+  hydratePackages(_therapy.packages)
+
+  // console.log(_therapy)
+
+  selectedTherapy.value = _therapy
 })
+
+const hasSubstrate = computed(() => {
+  return isObject(selectedTherapy.substrate)
+})
+
+function findRequestedTherapy(idRequested) {
+  // IS THIS SHALLOW?
+  const _therapies = Object.values(therapies) // convert object of objects to array of objects
+  return _therapies.find((i) => i.id == idRequested)
+}
+
+function hydrateSubstrate(_substrate) {
+  if (_substrate == null) return null
+  return substrates[_substrate]
+}
+
+function hydratePackages(_packages) {
+  _packages.forEach((p, index) => {
+    if (isObject(p)) {
+      // console.log('already hydrated')
+      return
+    }
+
+    // Two types of package
+    if (typeof p == 'string') {
+      try {
+        let key = p
+        _packages[index] = getDose(key)
+      } catch (err) {
+        throw err
+      }
+    } else if (Array.isArray(p)) {
+      let key = p[1]
+
+      if (isObject(key)) {
+        // console.log('already hydrated')
+        return
+      }
+
+      try {
+        let _dose = getDose(key)
+        _packages[index][1] = _dose
+      } catch (err) {
+        throw err
+      }
+    }
+  })
+}
+
+function getDose(key) {
+  let _dose = doses[key]
+
+  if (!isObject(_dose)) {
+    let _message = `Key not found: ${key}`
+    console.log(_message)
+    throw new Error(_message)
+  }
+
+  return _dose
+}
 
 function goPrev() {
   const num = Number(props.id)
 
   if (Number.isNaN(num)) {
-    console.log("goPrev didn't receive a valid number: " + props.id)
+    let _message = `goPrev didn't receive a valid number: ${props.id}`
+    console.log(_message)
+    throw new Error(_message)
   } else {
     pushRoute(num - 1)
   }
@@ -258,7 +322,9 @@ function goNext() {
   const num = Number(props.id)
 
   if (Number.isNaN(num)) {
-    console.log("goPrev didn't receive a valid number: " + props.id)
+    let _message = `goNext didn't receive a valid number: ${props.id}`
+    console.log(_message)
+    throw new Error(_message)
   } else {
     pushRoute(num + 1)
   }

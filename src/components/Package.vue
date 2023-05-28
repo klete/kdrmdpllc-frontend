@@ -5,7 +5,7 @@
       {{ package.label }}
     </td>
   </tr>
-  <tr v-for="(element, index) in package.elements" :key="index">
+  <tr v-for="(element, index) in elements" :key="index">
     <td></td>
     <td class="package-name">&ndash; {{ element.name }}</td>
     <td class="amount">
@@ -28,8 +28,15 @@
 
 <script setup>
 import { formatNumber } from '../utilities/index.mjs'
+import { doses } from '@/assets/data/doses.json'
+
+const elements = []
 
 const props = defineProps(['package'])
+
+props.package.elements.forEach((el) => {
+  elements.push(doses[el])
+})
 </script>
 
 <style scoped>

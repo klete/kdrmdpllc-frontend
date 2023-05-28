@@ -12,6 +12,7 @@ import './assets/css/base.css'
 import './assets/css/form.css'
 import './assets/css/print.css'
 
+import { VueFire } from 'vuefire'
 import firebaseApp from '@/firebase/config.js'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
@@ -23,6 +24,10 @@ onAuthStateChanged(auth, () => {
   if (!app) {
     app = createApp(App)
     app.use(router)
+    app.use(VueFire, {
+      firebaseApp,
+      modules: [],
+    })
     app.component('modal', Modal)
     app.provide('GStore', GStore)
     app.mount('#app')

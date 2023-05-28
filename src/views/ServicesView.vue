@@ -1,35 +1,38 @@
 <template>
   <section class="table-container">
     <h3>
-      Target Systems
+      Records
     </h3>
     <table>
       <thead>
-        <tr>
-          <th v-for="system in target_systems" :key="system.id">
-            {{ system.name }}
-          </th>
-        </tr>
+        <th>{{ _collection }}</th>
       </thead>
       <tbody>
-        <TargetSystemFragment
-          v-for="service in services"
-          :key="service.id"
-          :serviceid="service.id"
-        />
+        <tr v-for="record in records" :key="record.id">
+          <td>
+            {{ record.id }}
+            <!-- <router-link
+              :to="{
+                name: 'ServiceView',
+                params: { id: `${service.id}` },
+              }"
+            >
+              {{ service.name }}
+            </router-link> -->
+          </td>
+        </tr>
       </tbody>
     </table>
   </section>
 </template>
 
 <script setup>
-import TargetSystems from '@/assets/data/target_systems.mjs'
-import Services from '@/assets/data/services.mjs'
-import TargetSystemFragment from './TargetSystemFragment.vue'
+import { useFirestore, useCollection } from 'vuefire'
+import { collection } from 'firebase/firestore'
 
-const services = Services.services
-
-const target_systems = TargetSystems.target_systems
+const db = useFirestore()
+const _collection = 'doses'
+const records = useCollection(collection(db, _collection))
 </script>
 
 <style scoped>
@@ -69,9 +72,14 @@ th {
   text-align: left;
   /* background: hsl(276 100% 19% / 0.2); */
   background: hsl(207 24% 43% / 1);
+  text-transform: capitalize;
 }
 
 html[color-scheme='light'] th {
   background: hsl(276 100% 19% / 0.2);
+}
+
+td a {
+  color: white;
 }
 </style>

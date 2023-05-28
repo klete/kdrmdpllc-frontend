@@ -5,7 +5,11 @@ import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 import Login from '@/views/LogIn.vue'
 import Dashboard from '@/views/Dashboard.vue'
+import ServicesView from '@/views/ServicesView.vue'
 import ServiceView from '@/views/ServiceView.vue'
+import AddService from '@/views/AddService.vue'
+import EditService from '@/views/EditService.vue'
+import DeleteService from '@/views/DeleteService.vue'
 import TherapyView from '@/views/TherapyView.vue'
 import GuidelineIndexView from '@/views/GuidelineIndexView.vue'
 import TargetSystemsView from '@/views/TargetSystemsView.vue'
@@ -67,9 +71,39 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
+    path: '/services',
+    name: 'ServicesView',
+    component: ServicesView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/services/add',
+    name: 'AddService',
+    component: AddService,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+  },
+  {
     path: '/service/:id',
     name: 'ServiceView',
     component: ServiceView,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+    props: true,
+  },
+  {
+    path: '/service/:id/edit',
+    name: 'EditService',
+    component: EditService,
+    meta: { requiresAuth: true },
+    beforeEnter: requireAuth,
+    props: true,
+  },
+  {
+    path: '/service/:id/delete',
+    name: 'DeleteService',
+    component: DeleteService,
     meta: { requiresAuth: true },
     beforeEnter: requireAuth,
     props: true,

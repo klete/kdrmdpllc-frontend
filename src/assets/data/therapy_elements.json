@@ -1,0 +1,199 @@
+{
+  "substrates": {
+    "substrate_ringers": {
+      "name": "Lactated Ringers",
+      "amount": 1000,
+      "units": "mL"
+    },
+    "substrate_saline": {
+      "name": "Normal Saline",
+      "amount": 1000,
+      "units": "mL"
+    }
+  },
+  "elements": {
+    "alpha_lipoic_acid": {
+      "name": "Alpha-Lipoic Acid (ALA)",
+      "doses": ["alpha_lipoic_acid_25_5"]
+    },
+    "arginine": {
+      "name": "arginine",
+      "doses": ["arginine_100_1", "arginine_100_2", "arginine_100_5"]
+    },
+    "biotin": {
+      "name": "biotin",
+      "doses": ["biotin_10_1"]
+    },
+    "calcium_gluconate": {
+      "name": "Calcium Gluconate",
+      "doses": ["calcium_gluconate_100_1", "calcium_gluconate_100_5"]
+    },
+    "choline": {
+      "name": "choline",
+      "doses": ["choline_50_1"]
+    },
+    "citrulline": {
+      "name": "citrulline",
+      "doses": ["citrulline_100_1", "citrulline_100_2", "citrulline_100_5"]
+    },
+    "copper": {
+      "name": "copper",
+      "doses": ["copper_0__3_0__5", "copper_0__3_1"]
+    },
+
+    "coq10": {
+      "name": "coq10",
+      "doses": ["coq10_20_3"]
+    },
+
+    "cyanocobalamin": {
+      "name": "cyanocobalamin",
+      "doses": ["cyanocobalamin_50_1"]
+    },
+
+    "dexpanthenol": {
+      "name": "dexpanthenol",
+      "doses": ["dexpanthenol_5_1"]
+    },
+
+    "glutathione": {
+      "name": "glutathione",
+      "doses": [
+        "glutathione_200_1",
+        "glutathione_200_2__5",
+        "glutathione_200_5",
+        "glutathione_200_10"
+      ]
+    },
+    "glycine": {
+      "name": "glycine",
+      "doses": ["glycine_50_5", "glycine_50_10"]
+    },
+    "hydroxocobalamin": {
+      "name": "hydroxocobalamin",
+      "doses": ["hydroxocobalamin_2_0__5", "hydroxocobalamin_2_1"]
+    },
+    "l_carnitine": {
+      "name": "L-Carnitine",
+      "doses": ["l_carnitine_50_1", "l_carnitine_500_2"]
+    },
+    "l_taurine": {
+      "name": "L-Taurine",
+      "doses": ["l_taurine_50_1", "l_taurine_50_5", "l_taurine_50_10"]
+    },
+    "lysine": {
+      "name": "lysine",
+      "doses": ["lysine_100_2__5"]
+    },
+    "magnesium_chloride": {
+      "name": "magnesium chloride",
+      "doses": [
+        "magnesium_chloride_300_0__5",
+        "magnesium_chloride_300_1",
+        "magnesium_chloride_300_2",
+        "magnesium_chloride_300_4"
+      ]
+    },
+    "manganese": {
+      "name": "manganese",
+      "doses": ["manganese_55_0__5", "manganese_55_1"]
+    },
+    "methionine": {
+      "name": "methionine",
+      "doses": ["methionine_15_1"]
+    },
+    "selenium": {
+      "name": "selenium",
+      "doses": ["selenium_60_0__5", "selenium_60_1"]
+    },
+    "thiamine": {
+      "name": "thiamine",
+      "doses": ["thiamine_15_1"]
+    },
+
+    "toradol": {
+      "name": "toradol",
+      "doses": ["toradol_15_1"]
+    },
+
+    "vitamin_b_1": {
+      "name": "vitamin b-1",
+      "doses": ["vitamin_b_1_100_1", "vitamin_b_1_100_5"]
+    },
+
+    "vitamin_b_2": {
+      "name": "vitamin b-2",
+      "doses": ["vitamin_b_2_2_1", "vitamin_b_2_2_5"]
+    },
+
+    "vitamin_b_3": {
+      "name": "vitamin b-3",
+      "doses": ["vitamin_b_3_100_1", "vitamin_b_3_100_5"]
+    },
+    "vitamin_b_5": {
+      "name": "vitamin b-5",
+      "doses": ["vitamin_b_5_2_1", "vitamin_b_5_2_5"]
+    },
+    "vitamin_b_6": {
+      "name": "vitamin b-6",
+      "doses": ["vitamin_b_6_2_1", "vitamin_b_6_2_5"]
+    },
+
+    "vitamin_b_12": {
+      "name": "vitamin b-12",
+      "doses": ["vitamin_b_12_2_1"]
+    },
+    "vitamin_c": {
+      "name": "vitamin c",
+      "doses": [
+        "vitamin_c_100_5",
+        "vitamin_c_500_20",
+        "vitamin_c_500_100",
+        "vitamin_c_500_25",
+        "vitamin_c_500_1",
+        "vitamin_c_500_5",
+        "vitamin_c_500_10"
+      ]
+    },
+    "vitamin_d": {
+      "name": "vitamin d",
+      "doses": ["vitamin_d_1000000_0__5"]
+    },
+    "zinc": {
+      "name": "zinc",
+      "doses": ["zinc_3_0__5", "zinc_3_1"]
+    },
+    "zinc_sulfate": {
+      "name": "zinc sulfate",
+      "doses": ["zinc_sulfate_10_0__5", "zinc_sulfate_10_1"]
+    },
+    "zofran": {
+      "name": "zofran",
+      "doses": ["zofran_2_2"]
+    }
+  },
+
+  "bi_amino_blend_1": {
+    "element_id": 13,
+    "name": "Bi-Amino Blend",
+    "amount": null,
+    "elemental_units_per": null,
+    "volume_units": null,
+    "volume_infused": 1,
+    "volume_infused_units": "mL",
+    "amount_element_infused": 100,
+    "element_infused_units": "mg"
+  },
+
+  "bi_amino_blend_2": {
+    "element_id": 13,
+    "name": "Bi-Amino Blend",
+    "amount": null,
+    "elemental_units_per": null,
+    "volume_units": null,
+    "volume_infused": 2,
+    "volume_infused_units": "mL",
+    "amount_element_infused": 200,
+    "element_infused_units": "mg"
+  }
+}

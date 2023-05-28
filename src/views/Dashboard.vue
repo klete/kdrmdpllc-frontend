@@ -16,6 +16,16 @@
           Elements
         </router-link>
       </li>
+      <li>
+        <router-link :to="{ name: 'AddService' }">
+          Add Record
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'ServicesView' }">
+          Records
+        </router-link>
+      </li>
     </ul>
   </article>
 </template>

@@ -1,62 +1,63 @@
 <template>
-  <tr>
-    <td class="service" colspan="8">{{ service.name }}</td>
-  </tr>
-  <tr v-for="(m, rowIndex) in max_therapies" :key="rowIndex">
-    <td v-for="(target, index) in target_systems" :key="index">
-      <router-link
-        :to="{
-          name: 'TherapyView',
-          params: { id: `${getTherapy(target, rowIndex)?.id}` },
-        }"
-      >
-        {{ getTherapy(target, rowIndex)?.name }}
-      </router-link>
+  <tr v-for="(m, rowIndex) in numTableRows" :key="rowIndex">
+    <td v-for="(n, colIndex) in numTableColumns" :key="colIndex">
+      <TherapyLink
+        :rowIndex="rowIndex"
+        :colIndex="colIndex"
+        :serviceIndex="serviceIndex"
+      />
     </td>
   </tr>
 </template>
 
 <script setup>
-import TargetSystems from '@/assets/data/target_systems.mjs'
-import Services from '@/assets/data/services.mjs'
+import { ref, watchEffect } from 'vue'
 
-const services = Services.services
-const target_systems = TargetSystems.target_systems
-const num_systems = target_systems.length
+import TherapyLink from '@/components/TherapyLink.vue'
 
-const props = defineProps(['serviceid'])
+import { useFirestore, useCollection } from 'vuefire'
+import { collection } from 'firebase/firestore'
 
-let service = services.find((service) => +service.id === +props.serviceid)
+const props = defineProps(['serviceIndex'])
 
-function getTherapy(target, rowIndex) {
-  return target.services.find((s) => +s.id === +props.serviceid).therapies[
-    rowIndex
-  ]
-}
+const db = useFirestore()
 
-let max_therapies = 0
+// A 'fragment' represents the set of rows and columns for a particular service.
 
-for (let j = 0; j < num_systems; j++) {
-  let _system = target_systems[j]
-  let _services = _system.services
+// 'targets' form the columns
+const targets = useCollection(collection(db, 'targets'))
 
-  let _service = _services.find((s) => +s.id === +props.serviceid)
+// The number of rows in a fragment is the maximum of the number of therapies in the therapies array for each target.
 
-  let num_therapies = _service.therapies.length
+var numTableRows = ref(0)
+var numTableColumns = ref(0)
 
-  if (num_therapies > max_therapies) {
-    max_therapies = num_therapies
+watchEffect(function initializeData() {
+  numTableRows.value = setNumTableRows()
+  numTableColumns.value = targets.value.length
+})
+
+function setNumTableRows() {
+  var _maxTherapies = 0
+
+  // Loop over the target systems, getting the list of therapies for each.
+  // Target systems are displayed in the columns of the table.
+  // Therapies for each target system are displayed in the column, organized by service.
+  // To know how many rows I need to display for each service section, I must know how big
+  // the biggest therapies array is for each service across all targets.
+  for (let xsystem of targets.value) {
+    let _service = xsystem.services[+props.serviceIndex]
+
+    if (_service.therapies.length > _maxTherapies) {
+      _maxTherapies = _service.therapies.length
+    }
   }
+
+  return _maxTherapies
 }
 </script>
 
 <style scoped>
-td.service {
-  /* background-color: hsl(192 19% 45% / 1); */
-  /* background: hsl(276 100% 19% / 0.2); */
-  background: hsl(207 24% 43% / 1);
-}
-
 html[color-scheme='light'] td.service {
   background: hsl(276 100% 19% / 0.2);
 }

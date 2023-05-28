@@ -10,4 +10,14 @@ const formatNumber = (num) => {
   return null
 }
 
-export { formatNumber }
+function isObject(item) {
+  if (Array.isArray(item)) {
+    return false
+  }
+  if (item == null) {
+    return false
+  }
+  return typeof item == 'object'
+}
+
+export { formatNumber, isObject }

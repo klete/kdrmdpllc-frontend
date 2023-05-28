@@ -4,8 +4,8 @@
       Elements Index
     </h3>
 
-    <table class="elements">
-      <tbody v-for="(element, index) in elements" :key="`elements_${index}`">
+    <table class="layout">
+      <tbody v-for="(element, index) in _elements" :key="`elements_${index}`">
         <tr>
           <td class="name">{{ element.name }}</td>
           <td>
@@ -35,12 +35,10 @@
                     {{ dose.element_infused_units }}
                   </td>
 
-                  <td v-if="dose.therapies">
+                  <td v-if="dose.hydrated_therapies.length > 0">
                     <ul>
                       <li
-                        v-for="(therapy, j) in getTherapiesForIds(
-                          dose.therapies,
-                        )"
+                        v-for="(therapy, j) in dose.hydrated_therapies"
                         :key="j"
                       >
                         <router-link
@@ -49,7 +47,7 @@
                             params: { id: `${therapy.id}` },
                           }"
                         >
-                          {{ therapy.name }} ({{ therapy.category.name }})
+                          {{ therapy.name }} ({{ therapy.category }})
                         </router-link>
                       </li>
                     </ul>
@@ -65,18 +63,75 @@
 </template>
 
 <script setup>
-import Therapies from '@/assets/data/therapies.mjs'
-import { elements } from '@/assets/data/therapy_elements.mjs'
 import { formatNumber } from '@/utilities/index.mjs'
+
+import { ref, watchEffect } from 'vue'
+import { useFirestore, useCollection } from 'vuefire'
+import { collection } from 'firebase/firestore'
+
+const db = useFirestore()
+
+const therapies = useCollection(collection(db, 'therapies'))
+const elements = useCollection(collection(db, 'elements'))
+const doses = useCollection(collection(db, 'doses'))
+
+// What we will display
+const _elements = ref([])
+
+watchEffect(function initializeData() {
+  // Reset to empty array when we rerun the initialization code
+  _elements.value = []
+
+  for (var _element of elements.value) {
+    // Construct the element
+    var elementObj = {
+      name: _element.name,
+      doses: [],
+    }
+
+    // Construct the different ways in which it is used
+    for (var _dose of _element.doses) {
+      let doseObj = getDose(_dose)
+
+      // each dose is used in different therapies
+      if ('therapies' in doseObj) {
+        let hydrated_therapies = getTherapiesForIds(doseObj.therapies)
+        doseObj.hydrated_therapies = hydrated_therapies
+      } else {
+        doseObj.hydrated_therapies = []
+      }
+
+      elementObj.doses.push(doseObj)
+    }
+
+    _elements.value.push(elementObj)
+  }
+})
+
+function getDose(doseName) {
+  let _dose = doses.value.find(function isMatch(dose) {
+    return dose.id == doseName
+  })
+
+  let new_dose = Object.assign({}, _dose)
+  new_dose.therapies = [..._dose.therapies]
+  return new_dose
+}
 
 function getTherapiesForIds(therapyIds) {
   return therapyIds.map(getTherapyForId).sort(sortTherapies)
 }
 
 function getTherapyForId(therapyId) {
-  return Therapies.therapies.find(function isMatch(therapy) {
-    return therapy.id == therapyId
+  let _therapy = therapies.value.find(function isMatch(therapy) {
+    return therapy.record_id == therapyId
   })
+
+  return {
+    name: _therapy.name,
+    category: _therapy.category.name,
+    id: _therapy.id,
+  }
 }
 
 function sortTherapies(th1, th2) {
@@ -98,7 +153,7 @@ section.table-container {
   padding: 0rem 1rem 1rem;
   max-width: 100%;
   overflow-x: auto;
-  /* background-color: hsl(192 19% 45% / 1); */
+
   background-color: hsl(276 100% 19% / 0.2);
 }
 
@@ -119,8 +174,12 @@ html[color-scheme='light'] section.table-container {
   background-color: white;
 }
 
-th,
-td {
+table.layout td:first-child {
+  padding: 1rem 1rem 0.5rem 1rem;
+  vertical-align: top;
+}
+table.elements th,
+table.elements td {
   padding: 0.5rem 1rem 0.5rem 1rem;
   vertical-align: top;
 }
@@ -132,6 +191,7 @@ th {
 
 td.amount {
   text-align: right;
+  width: 12rem;
 }
 
 td.name {
@@ -159,6 +219,10 @@ html[color-scheme='light'] td {
   font-weight: 600;
 }
 
+table.layout th,
+table.layout td {
+  border: 1px solid white;
+}
 table.elements th,
 table.elements td {
   border: 1px solid white;

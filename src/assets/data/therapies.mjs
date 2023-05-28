@@ -1,69 +1,4 @@
-import {
-  l_carnitine_500_2,
-  vitamin_b_1_100_1,
-  vitamin_b_3_100_1,
-  vitamin_b_2_2_1,
-  vitamin_b_5_2_1,
-  vitamin_b_6_2_1,
-  vitamin_b_12_2_1,
-  magnesium_chloride_300_0__5,
-  magnesium_chloride_300_1,
-  magnesium_chloride_300_4,
-  magnesium_chloride_300_2,
-  calcium_gluconate_100_1,
-  cyanocobalamin_50_1,
-  methionine_15_1,
-  choline_50_1,
-  l_carnitine_50_1,
-  thiamine_15_1,
-  dexpanthenol_5_1,
-  vitamin_d_1000000_0__5,
-  coq10_20_3,
-  zofran_2_2,
-  toradol_15_1,
-  calcium_gluconate_100_5,
-  substrate_ringers,
-  substrate_saline,
-  alpha_lipoic_acid_25_5,
-  biotin_10_1,
-  glutathione_200_2__5,
-  glutathione_200_1,
-  glutathione_200_5,
-  glutathione_200_10,
-  arginine_100_1,
-  citrulline_100_1,
-  arginine_100_2,
-  citrulline_100_2,
-  lysine_100_2__5,
-  l_taurine_50_1,
-  l_taurine_50_5,
-  l_taurine_50_10,
-  glycine_50_5,
-  glycine_50_10,
-  hydroxocobalamin_2_0__5,
-  hydroxocobalamin_2_1,
-  vitamin_c_100_5,
-  vitamin_c_500_20,
-  vitamin_c_500_100,
-  vitamin_c_500_25,
-  vitamin_c_500_1,
-  vitamin_c_500_5,
-  vitamin_c_500_10,
-  zinc_sulfate_10_0__5,
-  zinc_sulfate_10_1,
-  bi_amino_blend_1,
-  bi_amino_blend_2,
-} from './therapy_elements.mjs'
-
-import {
-  vitamin_b_complex,
-  bi_amino_blend,
-  tralement_blend,
-  lipo_c,
-  lipo_b,
-} from './packages.mjs'
-
-const therapies = [
+export const therapies = [
   {
     id: 1,
     name: 'Alleviate',
@@ -86,12 +21,12 @@ const therapies = [
       minimum: '30 minutes',
       maximum: '45 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [
-      calcium_gluconate_100_5,
-      magnesium_chloride_300_4,
-      vitamin_b_complex,
-      hydroxocobalamin_2_1,
+      'calcium_gluconate_100_5',
+      'magnesium_chloride_300_4',
+      'vitamin_b_complex',
+      'hydroxocobalamin_2_1',
     ],
   },
 
@@ -117,15 +52,15 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      vitamin_c_100_5,
-      vitamin_b_complex,
-      bi_amino_blend,
-      glycine_50_10,
-      lysine_100_2__5,
-      tralement_blend,
+      'vitamin_c_100_5',
+      'vitamin_b_complex',
+      'bi_amino_blend',
+      'glycine_50_10',
+      'lysine_100_2__5',
+      'tralement_blend',
     ],
   },
 
@@ -151,16 +86,11 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_ringers,
-    // elements: [
-    //   ['', vitamin_c_500_20],
-    //   ['', biotin_10_1],
-    //   ['SIVP', glutathione_200_5],
-    // ],
+    substrate: 'substrate_ringers',
     packages: [
-      ['', vitamin_c_500_20],
-      ['', biotin_10_1],
-      ['SIVP', glutathione_200_5],
+      ['', 'vitamin_c_500_20'],
+      ['', 'biotin_10_1'],
+      ['SIVP', 'glutathione_200_5'],
     ],
   },
 
@@ -186,7 +116,7 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [],
   },
 
@@ -212,12 +142,12 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      hydroxocobalamin_2_1,
-      l_taurine_50_5,
-      ['SIVP', alpha_lipoic_acid_25_5],
+      'hydroxocobalamin_2_1',
+      'l_taurine_50_5',
+      ['SIVP', 'alpha_lipoic_acid_25_5'],
     ],
   },
 
@@ -243,14 +173,14 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      vitamin_b_complex,
-      bi_amino_blend,
-      glycine_50_10,
-      lysine_100_2__5,
-      l_taurine_50_5,
+      'vitamin_b_complex',
+      'bi_amino_blend',
+      'glycine_50_10',
+      'lysine_100_2__5',
+      'l_taurine_50_5',
     ],
   },
 
@@ -282,9 +212,8 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_saline,
-    // elements: [vitamin_c_500_100],
-    packages: [vitamin_c_500_100],
+    substrate: 'substrate_saline',
+    packages: ['vitamin_c_500_100'],
   },
 
   {
@@ -309,12 +238,12 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [
-      vitamin_b_complex,
-      tralement_blend,
-      l_taurine_50_5,
-      magnesium_chloride_300_2,
+      'vitamin_b_complex',
+      'tralement_blend',
+      'l_taurine_50_5',
+      'magnesium_chloride_300_2',
     ],
   },
 
@@ -340,9 +269,9 @@ const therapies = [
       minimum: '30 minutes',
       maximum: '45 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
-    packages: [vitamin_c_500_25, vitamin_b_complex, zinc_sulfate_10_1],
+    packages: ['vitamin_c_500_25', 'vitamin_b_complex', 'zinc_sulfate_10_1'],
   },
 
   {
@@ -375,14 +304,14 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      vitamin_b_complex,
-      magnesium_chloride_300_0__5,
-      hydroxocobalamin_2_0__5,
-      calcium_gluconate_100_1,
-      vitamin_c_500_1,
+      'vitamin_b_complex',
+      'magnesium_chloride_300_0__5',
+      'hydroxocobalamin_2_0__5',
+      'calcium_gluconate_100_1',
+      'vitamin_c_500_1',
     ],
     resources: [
       {
@@ -422,16 +351,16 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      vitamin_b_complex,
-      magnesium_chloride_300_0__5,
-      hydroxocobalamin_2_0__5,
-      calcium_gluconate_100_1,
-      vitamin_c_500_1,
-      zinc_sulfate_10_1,
-      l_taurine_50_5,
+      'vitamin_b_complex',
+      'magnesium_chloride_300_0__5',
+      'hydroxocobalamin_2_0__5',
+      'calcium_gluconate_100_1',
+      'vitamin_c_500_1',
+      'zinc_sulfate_10_1',
+      'l_taurine_50_5',
     ],
   },
 
@@ -471,7 +400,7 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_saline,
+    substrate: 'substrate_saline',
     packages: [
       {
         id: 0,
@@ -541,17 +470,17 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [
-      vitamin_c_500_1,
-      vitamin_b_complex,
-      zinc_sulfate_10_1,
-      hydroxocobalamin_2_1,
-      l_taurine_50_1,
-      magnesium_chloride_300_1,
-      bi_amino_blend,
-      calcium_gluconate_100_1,
-      ['SIVP', glutathione_200_1],
+      'vitamin_c_500_1',
+      'vitamin_b_complex',
+      'zinc_sulfate_10_1',
+      'hydroxocobalamin_2_1',
+      'l_taurine_50_1',
+      'magnesium_chloride_300_1',
+      'bi_amino_blend',
+      'calcium_gluconate_100_1',
+      ['SIVP', 'glutathione_200_1'],
     ],
   },
 
@@ -573,13 +502,13 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      vitamin_c_500_5,
-      vitamin_b_complex,
-      tralement_blend,
-      magnesium_chloride_300_2,
+      'vitamin_c_500_5',
+      'vitamin_b_complex',
+      'tralement_blend',
+      'magnesium_chloride_300_2',
     ],
   },
 
@@ -601,16 +530,16 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [
-      biotin_10_1,
-      vitamin_b_complex,
-      hydroxocobalamin_2_1,
-      l_taurine_50_5,
-      bi_amino_blend,
-      glycine_50_10,
-      lysine_100_2__5,
-      ['SIVP', alpha_lipoic_acid_25_5],
+      'biotin_10_1',
+      'vitamin_b_complex',
+      'hydroxocobalamin_2_1',
+      'l_taurine_50_5',
+      'bi_amino_blend',
+      'glycine_50_10',
+      'lysine_100_2__5',
+      ['SIVP', 'alpha_lipoic_acid_25_5'],
     ],
   },
 
@@ -632,18 +561,18 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [
-      biotin_10_1,
-      vitamin_b_complex,
-      hydroxocobalamin_2_1,
-      l_taurine_50_5,
-      bi_amino_blend,
-      glycine_50_10,
-      lysine_100_2__5,
-      l_carnitine_500_2,
-      ['SIVP', glutathione_200_2__5],
-      ['SIVP', alpha_lipoic_acid_25_5],
+      'biotin_10_1',
+      'vitamin_b_complex',
+      'hydroxocobalamin_2_1',
+      'l_taurine_50_5',
+      'bi_amino_blend',
+      'glycine_50_10',
+      'lysine_100_2__5',
+      'l_carnitine_500_2',
+      ['SIVP', 'glutathione_200_2__5'],
+      ['SIVP', 'alpha_lipoic_acid_25_5'],
     ],
   },
 
@@ -669,8 +598,8 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
-    packages: [glutathione_200_10],
+    substrate: 'substrate_ringers',
+    packages: ['glutathione_200_10'],
   },
 
   {
@@ -695,16 +624,16 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
 
     packages: [
-      vitamin_c_500_1,
-      vitamin_b_complex,
-      zinc_sulfate_10_1,
-      hydroxocobalamin_2_1,
-      l_taurine_50_1,
-      magnesium_chloride_300_4,
-      glycine_50_5,
+      'vitamin_c_500_1',
+      'vitamin_b_complex',
+      'zinc_sulfate_10_1',
+      'hydroxocobalamin_2_1',
+      'l_taurine_50_1',
+      'magnesium_chloride_300_4',
+      'glycine_50_5',
     ],
   },
 
@@ -740,8 +669,8 @@ const therapies = [
       units: null,
     },
     packages: [
-      ['Single Boost', vitamin_c_500_10],
-      ['Double Boost', vitamin_c_500_20],
+      ['Single Boost', 'vitamin_c_500_10'],
+      ['Double Boost', 'vitamin_c_500_20'],
     ],
     resources: [
       {
@@ -800,7 +729,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [['Single Boost', hydroxocobalamin_2_0__5]],
+    packages: [['Single Boost', 'hydroxocobalamin_2_0__5']],
   },
 
   {
@@ -834,7 +763,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [['Single Boost', biotin_10_1]],
+    packages: [['Single Boost', 'biotin_10_1']],
   },
 
   {
@@ -859,7 +788,7 @@ const therapies = [
       minimum: '25 minutes',
       maximum: '30 minutes',
     },
-    substrate: substrate_ringers,
+    substrate: 'substrate_ringers',
     packages: [],
   },
 
@@ -894,8 +823,8 @@ const therapies = [
       units: null,
     },
     packages: [
-      ['Single Boost', l_taurine_50_5],
-      ['Double Boost', l_taurine_50_10],
+      ['Single Boost', 'l_taurine_50_5'],
+      ['Double Boost', 'l_taurine_50_10'],
     ],
   },
 
@@ -935,8 +864,8 @@ const therapies = [
       units: null,
     },
     packages: [
-      ['Single boost', magnesium_chloride_300_2],
-      ['Double boost', magnesium_chloride_300_4],
+      ['Single boost', 'magnesium_chloride_300_2'],
+      ['Double boost', 'magnesium_chloride_300_4'],
     ],
   },
 
@@ -972,12 +901,12 @@ const therapies = [
       units: null,
     },
     packages: [
-      ['Single Boost', bi_amino_blend_1],
-      ['', arginine_100_1],
-      ['', citrulline_100_1],
-      ['Double Boost', bi_amino_blend_2],
-      ['', arginine_100_2],
-      ['', citrulline_100_2],
+      ['Single Boost', 'bi_amino_blend_1'],
+      ['', 'arginine_100_1'],
+      ['', 'citrulline_100_1'],
+      ['Double Boost', 'bi_amino_blend_2'],
+      ['', 'arginine_100_2'],
+      ['', 'citrulline_100_2'],
     ],
   },
 
@@ -1012,8 +941,8 @@ const therapies = [
       units: null,
     },
     packages: [
-      ['Single Boost', zinc_sulfate_10_0__5],
-      ['Double Boost', zinc_sulfate_10_1],
+      ['Single Boost', 'zinc_sulfate_10_0__5'],
+      ['Double Boost', 'zinc_sulfate_10_1'],
     ],
   },
 
@@ -1048,7 +977,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [alpha_lipoic_acid_25_5],
+    packages: ['alpha_lipoic_acid_25_5'],
     resources: [
       {
         name: 'Alpha-Lipoic Acid',
@@ -1105,8 +1034,8 @@ const therapies = [
       units: null,
     },
     packages: [
-      ['Single Boost: SIVP', glutathione_200_2__5],
-      ['Double Boost: SIVP', glutathione_200_5],
+      ['Single Boost: SIVP', 'glutathione_200_2__5'],
+      ['Double Boost: SIVP', 'glutathione_200_5'],
     ],
     resources: [
       {
@@ -1160,7 +1089,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [['Single Boost SIVP', toradol_15_1]],
+    packages: [['Single Boost SIVP', 'toradol_15_1']],
   },
 
   {
@@ -1195,7 +1124,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [zofran_2_2],
+    packages: ['zofran_2_2'],
   },
 
   {
@@ -1230,7 +1159,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [hydroxocobalamin_2_1],
+    packages: ['hydroxocobalamin_2_1'],
   },
 
   {
@@ -1263,7 +1192,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [biotin_10_1],
+    packages: ['biotin_10_1'],
   },
 
   {
@@ -1299,7 +1228,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [coq10_20_3],
+    packages: ['coq10_20_3'],
   },
 
   {
@@ -1339,7 +1268,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [vitamin_d_1000000_0__5],
+    packages: ['vitamin_d_1000000_0__5'],
   },
 
   {
@@ -1374,7 +1303,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [glutathione_200_1],
+    packages: ['glutathione_200_1'],
   },
 
   {
@@ -1414,7 +1343,7 @@ const therapies = [
     //   thiamine_15_1,
     //   dexpanthenol_5_1,
     // ],
-    packages: [lipo_c],
+    packages: ['lipo_c'],
   },
 
   {
@@ -1447,8 +1376,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    // elements: [methionine_15_1, choline_50_1, cyanocobalamin_50_1],
-    packages: [lipo_b],
+    packages: ['lipo_b'],
   },
 
   {
@@ -1489,7 +1417,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [toradol_15_1],
+    packages: ['toradol_15_1'],
   },
 
   {
@@ -1522,7 +1450,7 @@ const therapies = [
       minimum: null,
       maximum: null,
     },
-    substrate: substrate_saline,
+    substrate: 'substrate_saline',
     packages: [
       {
         id: 0,
@@ -1581,7 +1509,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [bi_amino_blend_2, arginine_100_2, citrulline_100_2],
+    packages: ['bi_amino_blend_2', 'arginine_100_2', 'citrulline_100_2'],
   },
 
   {
@@ -1616,7 +1544,7 @@ const therapies = [
       amount: null,
       units: null,
     },
-    packages: [zofran_2_2],
+    packages: ['zofran_2_2'],
   },
 
   {
@@ -1646,6 +1574,6 @@ const therapies = [
   },
 ]
 
-export default {
-  therapies,
-}
+// export default {
+//   therapies,
+// }
