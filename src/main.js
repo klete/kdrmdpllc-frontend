@@ -24,10 +24,10 @@ console.log(import.meta.env)
 
 app = createApp(App)
 app.use(router)
-app.use(VueFire, {
-  firebaseApp,
-  modules: [],
-})
+// app.use(VueFire, {
+//   firebaseApp,
+//   modules: [],
+// })
 app.component('modal', Modal)
 app.provide('GStore', GStore)
 app.mount('#app')
