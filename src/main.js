@@ -12,9 +12,9 @@ import './assets/css/base.css'
 import './assets/css/form.css'
 import './assets/css/print.css'
 
-import { VueFire } from 'vuefire'
-import firebaseApp from '@/firebase/config.js'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+// import { VueFire } from 'vuefire'
+// import firebaseApp from '@/firebase/config.js'
+// import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 // const auth = getAuth(firebaseApp)
 
