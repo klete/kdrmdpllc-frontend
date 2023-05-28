@@ -4,6 +4,14 @@ on:
   push:
     brnches: [main]
 
+env:
+  VITE_FIREBASE_API_KEY: 'AIzaSyCOkaCEV9DV7t_FofZmTlEdifYUROzXxcg'
+  VITE_FIREBASE_AUTH_DOMAIN: 'rptm-2923a.firebaseapp.com'
+  VITE_FIREBASE_PROJECT_ID: 'rptm-2923a'
+  VITE_FIREBASE_STORAGE_BUCKET: 'rptm-2923a.appspot.com'
+  VITE_FIREBASE_MESSAGING_SENDER_ID: '101564066493'
+  VITE_FIREBASE_APP_ID: '1:101564066493:web:a919600ec3892f2012a5d4'
+
 jobs:
   deploy:
     name: Deploy to Amazon S3
