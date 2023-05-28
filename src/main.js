@@ -26,7 +26,6 @@ app = createApp(App)
 app.mount('#app')
 
 console.log(import.meta.env)
-console.log(VITE_FIREBASE_API_KEY)
 
 // onAuthStateChanged(auth, () => {
 //   if (!app) {
