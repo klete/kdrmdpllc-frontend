@@ -1,10 +1,10 @@
 <template>
-  <NavBar
+  <!-- <NavBar
     :menuIsActive="menuIsActive"
     @update:menu-status="updateMenuStatus"
     @login-requested="handleLoginRequest"
     @signup-requested="handleSignupRequest"
-  />
+  /> -->
 
   <main>
     <h2>
@@ -19,12 +19,12 @@
 
   <footer></footer>
 
-  <FlashMessage v-if="FlashMessageService.hasMessage()" />
+  <!-- <FlashMessage v-if="FlashMessageService.hasMessage()" />
 
   <modal v-if="showModal" :isActive="isActive" @close="handleCloseModal">
     <Login v-if="showLoginModal" @close="handleCloseModal" />
     <SignUp v-if="showSignUpModal" @close="handleCloseModal" />
-  </modal>
+  </modal> -->
 </template>
 
 <script setup>

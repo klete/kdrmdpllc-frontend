@@ -1,10 +1,8 @@
 import { createApp } from 'vue'
 
-console.log(import.meta.env)
-
 import App from './App.vue'
 import router from './router'
-import { GStore } from './store'
+// import { GStore } from './store'
 
 import Modal from './components/Modal.vue'
 
@@ -24,13 +22,10 @@ let app
 
 app = createApp(App)
 app.use(router)
-// app.use(VueFire, {
-//   firebaseApp,
-//   modules: [],
-// })
 app.component('modal', Modal)
-app.provide('GStore', GStore)
 app.mount('#app')
+
+console.log(import.meta.env)
 
 // onAuthStateChanged(auth, () => {
 //   if (!app) {
