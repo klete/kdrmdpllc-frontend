@@ -10,11 +10,11 @@
     <h2>
       Master Therapy Guide
     </h2>
-    <router-view v-slot="{ Component }">
+    <!-- <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" @login-requested="handleLoginRequest" />
       </transition>
-    </router-view>
+    </router-view> -->
   </main>
 
   <footer></footer>
@@ -27,7 +27,7 @@
   </modal> -->
 </template>
 
-<script setup>
+<!-- <script setup>
 import FlashMessage from './components/FlashMessage.vue'
 import NavBar from './components/NavBar.vue'
 import Login from './components/Login.vue'
@@ -83,7 +83,7 @@ function closeModal() {
 const showModal = computed(() => {
   return showLoginModal.value || showSignUpModal.value
 })
-</script>
+</script> -->
 
 <style scoped>
 h2 {

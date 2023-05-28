@@ -1,14 +1,19 @@
 <template>
-  <Home />
+  <div class="container">
+    <header>
+      <h1>
+        Home
+      </h1>
+    </header>
+  </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import Home from '@/components/Home.vue'
-
-export default {
-  components: {
-    Home,
-  },
+<style scoped>
+ul {
+  list-style-type: none;
+  flex-direction: column;
 }
-</script>
+ul li {
+  padding: 0.5em;
+}
+</style>

@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 
 import App from './App.vue'
-import router from './router'
+// import router from './router'
 // import { GStore } from './store'
 
-import Modal from './components/Modal.vue'
+// import Modal from './components/Modal.vue'
 
 import './assets/css/reset.css'
 import './assets/css/color-themes.css'
@@ -21,8 +21,8 @@ import './assets/css/print.css'
 let app
 
 app = createApp(App)
-app.use(router)
-app.component('modal', Modal)
+// app.use(router)
+// app.component('modal', Modal)
 app.mount('#app')
 
 console.log(import.meta.env)
