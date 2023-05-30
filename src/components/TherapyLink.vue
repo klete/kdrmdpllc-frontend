@@ -3,7 +3,7 @@
     v-if="therapyId"
     :to="{
       name: 'TherapyView',
-      params: { id: `${therapy?.id}` },
+      params: { id: therapyId },
     }"
   >
     {{ therapy?.name }}
@@ -30,6 +30,8 @@ watchEffect(function initializeData() {
     targets.value[+props.colIndex].services[+props.serviceIndex].therapies[
       +props.rowIndex
     ]
+
+  console.log(therapyId.value)
 
   therapy.value = null
 
