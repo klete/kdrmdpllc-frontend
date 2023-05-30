@@ -1,13 +1,15 @@
 <template>
-  <tr>
+  <tr v-if="package.label.length > 0">
     <td></td>
     <td class="name" colspan="4">
       {{ package.label }}
     </td>
   </tr>
-  <tr v-for="(element, index) in elements" :key="index">
+  <tr v-for="(element, index) in package.elements" :key="index">
     <td></td>
-    <td class="package-name">&ndash; {{ element.name }}</td>
+    <td class="package-name">
+      {{ element.name }}
+    </td>
     <td class="amount">
       {{ formatNumber(element.amount) }} {{ element.elemental_units_per }}
       <span v-if="element.amount">/</span>
@@ -28,15 +30,10 @@
 
 <script setup>
 import { formatNumber } from '../utilities/index.mjs'
-import { doses } from '@/assets/data/doses.json'
-
-const elements = []
 
 const props = defineProps(['package'])
 
-props.package.elements.forEach((el) => {
-  elements.push(doses[el])
-})
+console.log(props.package)
 </script>
 
 <style scoped>
@@ -44,6 +41,7 @@ th,
 td {
   padding: 0.5rem 1rem 0.5rem 1rem;
   vertical-align: top;
+  /* border: 1px solid white; */
 }
 
 th {
@@ -61,6 +59,7 @@ td.name {
 
 td.package-name {
   text-align: right;
+  text-transform: capitalize;
 }
 
 html[color-scheme='light'] th,

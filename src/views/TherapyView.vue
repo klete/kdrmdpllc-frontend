@@ -17,7 +17,7 @@
           <tr>
             <td>Category:</td>
             <td>
-              {{ selectedTherapy.category.name }}
+              {{ selectedTherapy.category }}
             </td>
           </tr>
           <tr>
@@ -116,7 +116,7 @@
           Elements
         </h3>
         <table class="elements">
-          <thead>
+          <thead class="elements">
             <th colspan="2"></th>
             <th>Amount</th>
             <th>Volume Infused</th>
@@ -126,10 +126,7 @@
             v-for="(_package, index) in selectedTherapy.packages"
             :key="`packages_${index}`"
           >
-            <!-- <tr>
-              <td>* {{ _package.id }} *</td>
-            </tr> -->
-            <Package v-if="_package.label" :package="_package" />
+            <Package v-if="'label' in _package" :package="_package" />
             <Element v-else :element="_package" />
           </tbody>
         </table>
@@ -192,16 +189,21 @@ import { isObject } from '@/utilities'
 
 // data imports
 
-import { therapies } from '@/assets/data/therapies.json'
-import { substrates } from '@/assets/data/therapy_elements.json'
-import { doses } from '@/assets/data/doses.json'
+import { useFirestore, useCollection } from 'vuefire'
+import { collection } from 'firebase/firestore'
+
+const db = useFirestore()
+
+const therapies = useCollection(collection(db, 'therapies'))
+const substrates = useCollection(collection(db, 'substrates'))
+const doses = useCollection(collection(db, 'doses'))
 
 // component imports
 
 import Element from '../components/Element.vue'
 import FrequencyList from '../components/FrequencyList.vue'
 import Package from '../components/Package.vue'
-import { MAX_VALUE_MILLIS } from '@firebase/util'
+// import { MAX_VALUE_MILLIS } from '@firebase/util'
 
 // initializations
 
@@ -211,11 +213,9 @@ const selectedTherapy = ref(null)
 
 // "max_therapies": used for navigation code.  When cycling between therapies, I need to know when to reset to the beginning.
 
-const therapy_keys = Object.keys(therapies)
-
-const max_therapies = therapy_keys.length
-
 watchEffect(() => {
+  const max_therapies = therapies.value.length
+
   let selectedId = Number(props.id)
 
   // Check to see that I have received a valid therapy id.
@@ -236,44 +236,73 @@ watchEffect(() => {
   }
 
   // Get the requested therapy data object
-  let _therapy = findRequestedTherapy(selectedId)
+  if (
+    therapies.value.length > 0 &&
+    substrates.value.length > 0 &&
+    doses.value.length > 0
+  ) {
+    let _therapy = findRequestedTherapy(selectedId)
 
-  // Hydrate the object
-  hydrateSubstrate(_therapy.substrate)
-  hydratePackages(_therapy.packages)
+    // console.log(_therapy)
 
-  // console.log(_therapy)
-
-  selectedTherapy.value = _therapy
+    selectedTherapy.value = _therapy
+  }
 })
 
 const hasSubstrate = computed(() => {
-  return isObject(selectedTherapy.substrate)
+  return isObject(selectedTherapy.value.substrate)
 })
 
 function findRequestedTherapy(idRequested) {
   // IS THIS SHALLOW?
-  const _therapies = Object.values(therapies) // convert object of objects to array of objects
-  return _therapies.find((i) => i.id == idRequested)
+  const _therapies = Object.values(therapies.value) // convert object of objects to array of objects
+
+  let _therapy = _therapies.find((i) => i.record_id == idRequested)
+  return {
+    name: _therapy.name,
+    category: _therapy.category.name,
+    indications: _therapy.indications,
+    contraindications: _therapy.contraindications,
+    cautions: _therapy.cautions,
+    recommendations: _therapy.recommendations,
+    description: _therapy.description,
+    focus: _therapy.focus,
+    frequency: _therapy.frequency,
+    source: _therapy.source,
+    resources: _therapy.resources,
+    substrate: hydrateSubstrate(_therapy.substrate),
+    packages: hydratePackages(_therapy.packages),
+    infusion: _therapy.infusion,
+  }
 }
 
 function hydrateSubstrate(_substrate) {
   if (_substrate == null) return null
-  return substrates[_substrate]
+  let __substrate = substrates.value.find((s) => s.id == _substrate)
+  return __substrate
 }
 
-function hydratePackages(_packages) {
+function hydratePackages(__packages) {
+  let _packages = [...__packages]
+
   _packages.forEach((p, index) => {
-    if (isObject(p)) {
+    if (isObject(p) && !('dose' in p)) {
       // console.log('already hydrated')
       return
     }
 
-    // Two types of package
+    // Threee types of package
     if (typeof p == 'string') {
       try {
         let key = p
         _packages[index] = getDose(key)
+      } catch (err) {
+        throw err
+      }
+    } else if (isObject(p)) {
+      try {
+        let key = p.dose
+        _packages[index].elements = [getDose(key)]
       } catch (err) {
         throw err
       }
@@ -285,6 +314,7 @@ function hydratePackages(_packages) {
         return
       }
 
+      console.log(p)
       try {
         let _dose = getDose(key)
         _packages[index][1] = _dose
@@ -293,10 +323,14 @@ function hydratePackages(_packages) {
       }
     }
   })
+
+  console.log(__packages)
+  console.log(_packages)
+  return _packages
 }
 
 function getDose(key) {
-  let _dose = doses[key]
+  let _dose = doses.value.find((d) => d.id == key)
 
   if (!isObject(_dose)) {
     let _message = `Key not found: ${key}`
@@ -304,7 +338,33 @@ function getDose(key) {
     throw new Error(_message)
   }
 
-  return _dose
+  console.log(_dose)
+
+  if ('elements' in _dose) {
+    let new_array = _dose.elements.map((key) => getDose(key))
+
+    return {
+      label: _dose.label,
+      id: _dose.id,
+      record_id: _dose.record_id,
+      elements: new_array,
+    }
+  } else {
+    return {
+      amount: _dose.amount,
+      id: _dose.id,
+      record_id: _dose.record_id,
+      amount_element_infused: _dose.amount_element_infused,
+      element_id: _dose.element_id,
+      element_infused_units: _dose.element_infused_units,
+      elemental_units_per: _dose.elemental_units_per,
+      name: _dose.name,
+      therapies: _dose.therapies,
+      volume_infused: _dose.volume_infused,
+      volume_infused_units: _dose.volume_infused_units,
+      volume_units: _dose.volume_units,
+    }
+  }
 }
 
 function goPrev() {
@@ -440,6 +500,10 @@ td.name {
 table.elements td {
   border: 1px solid white;
 } */
+
+table.elements thead.elements th:first-of-type {
+  min-width: 20rem;
+}
 
 ul {
   margin: 0;

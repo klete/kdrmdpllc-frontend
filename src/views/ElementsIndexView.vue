@@ -219,11 +219,11 @@ html[color-scheme='light'] td {
   font-weight: 600;
 }
 
-table.layout th,
-table.layout td {
+table.layout > th,
+table.layout > td {
   border: 1px solid white;
 }
-table.elements th,
+
 table.elements td {
   border: 1px solid white;
 }

@@ -63,6 +63,7 @@ th,
 td {
   padding: 0.5rem 1rem 0.5rem 1rem;
   vertical-align: top;
+  /* border: 1px solid white; */
 }
 
 th {
